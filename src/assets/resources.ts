@@ -25,7 +25,7 @@ const _rls_info: Record<string, any> = import.meta.glob(`../assets/releases/*/in
 let rls_info_s: Array<Record<string, any>> = []
 _rls_list.forEach(name => {
   for (let k in _rls_info) {
-    if (k.indexOf(name) >= 0){
+    if (k.indexOf(name) >= 0) {
       let item: Record<string, any> = {
         "id": _rls_info[k]["id"],
         "type": _rls_info[k]["type"],
@@ -39,7 +39,7 @@ _rls_list.forEach(name => {
         if (i.name.indexOf("MODEL NUMBER") >= 0)
           item["code"] = i["value"]
       })
-      if (item["homepage"] == null) 
+      if (item["homepage"] == null)
         item["homepage"] = `/releases/${item["id"]}`
       rls_info_s.push(item)
       break
@@ -48,8 +48,8 @@ _rls_list.forEach(name => {
 })
 // infomation in detail
 let rls_info_l: Record<string, any> = {}
-for (let k in _rls_info){
-  if(_rls_info[k].url == null){
+for (let k in _rls_info) {
+  if (_rls_info[k].url == null) {
     rls_info_l[_rls_info[k].id] = _rls_info[k]
   }
 }
@@ -75,4 +75,11 @@ const masks = (name: string) => _masks[`masks/${name}.png`]
 const _profile_photos = readResources(import.meta.glob(`@/assets/profiles/*`, { eager: true, import: "default" }))
 const profile_photos = (name: string) => _profile_photos[`profiles/${name}`]
 
-export { rls_info_s, rls_info_l, shop_icon, banner, rls_cover, rls_bar, masks, profile_photos }
+// ===============================================
+// audios
+// ===============================================
+const _audios = readResources(import.meta.glob(`@/assets/audios/*`, { eager: true, import: "default" }))
+console.log(_audios)
+const audios = (name: string) => _audios[`audios/${name}.mp3`] // must be mp3
+
+export { rls_info_s, rls_info_l, shop_icon, banner, rls_cover, rls_bar, masks, profile_photos, audios }

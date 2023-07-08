@@ -1,6 +1,10 @@
 <script lang="ts">
 import {rls_info_l, shop_icon, rls_cover} from '../assets/resources'
+import AudioPlayer from '@/tools/AudioPlayer.vue';
 export default {
+  components: {
+    AudioPlayer
+  },
   computed: {
     info: (vm: any) => (rls_info_l as Record<string, any>)[(vm.$route.params.id as string)],
     get_cover: (vm: any) => rls_cover((vm.$route.params.id as string)),
@@ -28,6 +32,8 @@ export default {
       </div>
     </div>
   </div>
+  <hr>
+  <AudioPlayer/>
   <hr>
   <div class="detail">
     <div class="info">

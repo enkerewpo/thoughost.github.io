@@ -5,6 +5,11 @@
   "homepage": null,
   "title": "KAKUSATSU SHOUJO 2",
   "subtitle": "",
+  "audio": {
+    "filename": "thgo004.mp3",
+    "title": "KAKUSATSU SHOUJO 2 CROSSFADE DEMO",
+    "artist": "Thoughost"
+  },
   "sources": [
     {
     "name": "bandcamp",
