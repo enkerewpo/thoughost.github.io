@@ -3,10 +3,10 @@
     <p>Title: {{ song_title }}</p>
     <p>Artist: {{ song_artist }}</p>
     <div class="controls">
-      <button @click="togglePlayback">
+      <button @click="toggle">
         <i :class="play_back_icon"></i>
       </button>
-      <p class="time-info">{{ convertSecondsToTime(song_current_time) }} / {{ convertSecondsToTime(song_total_time) }}
+      <p class="time-info">{{ convert_seconds_to_time(song_current_time) }} / {{ convert_seconds_to_time(song_total_time) }}
       </p>
     </div>
     <div class="progress-bar">
@@ -57,17 +57,17 @@ export default {
       this.audio_element.addEventListener('loadedmetadata', () => {
         this.song_total_time = Math.floor(this.audio_element.duration);
       });
-      this.audio_element.addEventListener('timeupdate', this.updateCurrentTime);
+      this.audio_element.addEventListener('timeupdate', this.update_current_time);
     },
-    convertSecondsToTime(seconds: number) {
+    convert_seconds_to_time(seconds: number) {
       const min = Math.floor(seconds / 60);
       const sec = Math.floor(seconds % 60);
       return `${min}:${sec < 10 ? '0' + sec : sec}`;
     },
-    updateCurrentTime() {
+    update_current_time() {
       this.song_current_time = Math.floor(this.audio_element.currentTime);
     },
-    togglePlayback() {
+    toggle() {
       if (this.is_playing) {
         this.pause();
       } else {
