@@ -34,7 +34,7 @@ export default {
       <div v-for="n in news" :key="n.id" class="news-wrapper tg-font-12">
         <div class="d-inline-block">{{ n.date }}</div>
         <div class="d-inline-block">
-          <a target="_top" :href="get_news_link(n.id)">
+          <a target="_top" :href="get_news_link(n.id)" class="news-link">
             <span>{{ n.title }}</span>
           </a>
         </div>
@@ -113,11 +113,40 @@ export default {
   margin-right: 10px;
 }
 
+.news-link {
+  color: #101010;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(to left, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%) right;
+  background-size: 200%;
+  transition: .3s ease-in-out;
+}
+
+.news-link:hover {
+  color: #fff;
+  padding: 0 10px;
+  background-position: left;
+  transition: .3s ease-in-out;
+}
+
 .more {
   position: absolute;
   right: 0;
   bottom: -44px;
   font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.more span {
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.more span:hover {
+  background-color: #101010;
+  color: #fff;
+  padding: 0 10px;
+  transition: .3s ease-in-out;
 }
 
 .more div {
