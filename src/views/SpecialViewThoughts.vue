@@ -118,44 +118,21 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.design-images {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.design-image-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.design-image-item img {
-  width: 70%;
-}
-
-.design-image-item p {
-  font-size: 1rem;
-  font-weight: 200;
-  line-height: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
 .thoughts-view {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
   font-family: 'Poppins', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
   text-align: center;
+  background: #ffffff;
+  color: #333333;
 }
 
 .cover-section {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   text-align: center;
-  padding: 10px;
+  padding: 2rem;
+  background: #ffffff;
 }
 
 .cover {
@@ -170,27 +147,26 @@ export default defineComponent({
   transform: scale(1.05);
 }
 
-.thoughts-view h1 {
-  font-size: 3.6rem;
-  line-height: 3.6rem;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
 .main-sections {
-  margin-top: 2rem;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 0;
   align-items: center;
 }
 
 .main-section {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 0;
   padding: 2rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.main-section.scrollable {
+  color: #000000;
+  padding: 0;
 }
 
 .sub-title {
@@ -199,6 +175,12 @@ export default defineComponent({
   line-height: 2rem;
   margin-bottom: 1.5rem;
   text-align: center;
+  color: #333333;
+}
+
+.main-section.scrollable .sub-title {
+  color: #000000;
+  padding: 2rem 2rem 0 2rem;
 }
 
 .content {
@@ -206,6 +188,7 @@ export default defineComponent({
   font-weight: 400;
   line-height: 1.5;
   text-align: center;
+  color: #666666;
 }
 
 .story-item {
@@ -216,7 +199,7 @@ export default defineComponent({
 .story-item h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #666;
+  color: #333333;
 }
 
 .credits {
@@ -239,7 +222,7 @@ export default defineComponent({
 
 .credit-group h3 {
   font-size: 1.1rem;
-  color: #666;
+  color: #333333;
   margin-bottom: 0.5rem;
 }
 
@@ -252,31 +235,66 @@ export default defineComponent({
 
 .credit-list span {
   font-size: 0.9rem;
-  color: #333;
+  color: #666666;
+}
+
+.design-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.design-image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-image-item img {
+  width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.design-image-item p {
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  color: #666666;
 }
 
 @media (max-width: 992px) {
   .thoughts-view {
+    padding: 0;
+  }
+
+  .cover-section {
     padding: 1rem;
-  }
-
-  .thoughts-view h1 {
-    font-size: 2.5rem;
-    line-height: 2.5rem;
-  }
-
-  .sub-title {
-    font-size: 2rem;
-    line-height: 1.8rem;
   }
 
   .main-section {
     padding: 1.5rem;
-    max-width: 100%;
+  }
+
+  .main-section.scrollable {
+    padding: 0;
+  }
+
+  .main-section.scrollable .sub-title {
+    padding: 1.5rem 1.5rem 0 1.5rem;
   }
 
   .credit-list {
     gap: 0.5rem;
+  }
+
+  .design-image-item img {
+    width: 90%;
   }
 }
 </style> 

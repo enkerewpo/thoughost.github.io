@@ -1,6 +1,6 @@
 <template>
     <div class="simple-carousel" @mouseenter="pauseAutoRotate" @mouseleave="startAutoRotate">
-        <button class="arrow left" @click="prev" :disabled="currentIndex === 0">&#8592;</button>
+        <button class="arrow left" @click="prev" :disabled="currentIndex === 0">&lt;</button>
         <div class="card">
             <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
             <transition :name="transitionName">
@@ -17,7 +17,7 @@
                     :class="{ active: currentIndex === index }" @click="goToSlide(index)"></button>
             </div>
         </div>
-        <button class="arrow right" @click="next" :disabled="currentIndex === items.length - 1">&#8594;</button>
+        <button class="arrow right" @click="next" :disabled="currentIndex === items.length - 1">&gt;</button>
     </div>
 </template>
 
@@ -147,20 +147,24 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    width: 100%;
-    margin: 2rem 0;
+    width: 100vw;
+    margin: 0;
+    background: #ffffff;
+    min-height: 40vh;
+    padding: 2rem 0;
+    position: relative;
 }
 
 .card {
-    background: #ffffff;
-    color: #181818;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    background: #2a2a2a;
+    color: #ffffff;
+    border-radius: 0;
+    box-shadow: none;
     padding: 2.5rem 2.5rem 2rem 2.5rem;
-    width: 800px;
+    width: 100%;
     height: 400px;
-    min-width: 800px;
-    max-width: 800px;
+    min-width: 100%;
+    max-width: 100%;
     min-height: 400px;
     max-height: 400px;
     text-align: center;
@@ -168,20 +172,29 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: box-shadow 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    border: none;
+}
+
+.card:hover {
+    box-shadow: none;
+    transform: none;
+    border: none;
 }
 
 .card h3 {
     font-size: 2.1rem;
     font-weight: 700;
     margin-bottom: 0.7rem;
+    color: #ffffff;
 }
 
 .card p {
     font-size: 1rem;
     margin: 0.2rem 0;
+    color: #d0d0d0;
 }
 
 .card p.subtitle {
@@ -193,45 +206,53 @@ export default defineComponent({
 
 .card p:last-child {
     font-size: 0.95rem;
-    color: #000000;
+    color: #e0e0e0;
 }
 
 .arrow {
-    background: rgba(106, 106, 106, 0.7);
+    background: none;
     border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    width: 50px;
-    height: 32px;
+    color: #ffffff;
+    font-size: 2rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 2;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.arrow.left {
+    left: 1rem;
+}
+
+.arrow.right {
+    right: 1rem;
 }
 
 .arrow:hover {
-    background: rgba(24, 24, 28, 0.9);
+    color: #ffffff;
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: none;
+    box-shadow: none;
 }
 
 .arrow:disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
 }
 
 @media (max-width: 900px) {
     .card {
         padding: 1rem;
-        width: 98vw;
-        min-width: 0;
-        max-width: 98vw;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
         height: 220px;
         min-height: 160px;
         max-height: 220px;
@@ -242,9 +263,7 @@ export default defineComponent({
     }
 
     .arrow {
-        font-size: 1.2rem;
-        width: 32px;
-        height: 32px;
+        font-size: 1.5rem;
     }
 }
 
@@ -293,38 +312,39 @@ export default defineComponent({
 
 .indicators {
     position: absolute;
-    bottom: 1rem;
+    bottom: 1.2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 0.5rem;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 0.5rem;
-    border-radius: 20px;
-    /* backdrop-filter: blur(4px); */
+    background: rgba(26, 26, 26, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .indicator-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: rgba(103, 103, 103, 0.2);
-    border: 2px solid rgba(199, 199, 199, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
 }
 
 .indicator-dot:hover {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.4);
     transform: scale(1.2);
 }
 
 .indicator-dot.active {
-    background: #000;
-    border-color: #000;
+    background: #ffffff;
     transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 900px) {
@@ -341,12 +361,13 @@ export default defineComponent({
 
 .progress-bar {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.05);
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
     transition: width 0.1s linear;
     z-index: 10;
+    opacity: 0.6;
 }
 
 .progress-bar::after {
@@ -356,9 +377,10 @@ export default defineComponent({
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
     transform-origin: left;
     transform: scaleX(var(--progress, 1));
     transition: transform 0.1s linear;
+    filter: blur(1px);
 }
 </style>
