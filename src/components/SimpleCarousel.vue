@@ -59,15 +59,24 @@ export default defineComponent({
             progressTimer = requestAnimationFrame(update);
         };
 
+        const resetAllStates = () => {
+            if (autoRotateTimer !== null) {
+                clearInterval(autoRotateTimer);
+                autoRotateTimer = null;
+            }
+            if (progressTimer) {
+                cancelAnimationFrame(progressTimer);
+                progressTimer = null;
+            }
+            progress.value = 100;
+            startAutoRotate();
+        };
+
         const prev = () => {
             if (currentIndex.value > 0) {
                 transitionName.value = 'slide-right';
                 currentIndex.value--;
-                progress.value = 100;
-                if (progressTimer) {
-                    cancelAnimationFrame(progressTimer);
-                }
-                updateProgress();
+                resetAllStates();
             }
         };
 
@@ -79,21 +88,13 @@ export default defineComponent({
                 transitionName.value = 'slide-left';
                 currentIndex.value = 0;
             }
-            progress.value = 100;
-            if (progressTimer) {
-                cancelAnimationFrame(progressTimer);
-            }
-            updateProgress();
+            resetAllStates();
         };
 
         const goToSlide = (index: number) => {
             transitionName.value = index > currentIndex.value ? 'slide-left' : 'slide-right';
             currentIndex.value = index;
-            progress.value = 100;
-            if (progressTimer) {
-                cancelAnimationFrame(progressTimer);
-            }
-            updateProgress();
+            resetAllStates();
         };
 
         const startAutoRotate = () => {
@@ -114,6 +115,7 @@ export default defineComponent({
                 cancelAnimationFrame(progressTimer);
                 progressTimer = null;
             }
+            progress.value = progress.value;
         };
 
         onMounted(() => {
