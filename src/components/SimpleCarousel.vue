@@ -156,7 +156,7 @@ export default defineComponent({
 }
 
 .card {
-    background: #2a2a2a;
+    background: #000000;
     color: #ffffff;
     border-radius: 0;
     box-shadow: none;
