@@ -26,6 +26,21 @@
         <SimpleCarousel :items="musicCards" :autoRotateInterval="30000" />
       </section>
 
+      <!-- 这里放一些设计相关的图 -->
+      <section class="main-section">
+        <div class="sub-title">设计图</div>
+        <div class="design-images">
+          <div class="design-image-item">
+            <img src="@/assets/special/thoughts_background.png" alt="Thoughts Background">
+            <p>图1：背景</p>
+          </div>
+          <div class="design-image-item">
+            <img src="@/assets/special/thoughts_background.png" alt="Thoughts Background">
+            <p>图2：背景</p>
+          </div>
+        </div>
+      </section>
+
       <section class="main-section scrollable">
         <div class="sub-title">艺术设计幕后</div>
         <SimpleCarousel :items="artCards" :autoRotateInterval="30000" />
@@ -103,6 +118,32 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.design-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-image-item img {
+  width: 70%;
+}
+
+.design-image-item p {
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
 .thoughts-view {
   padding: 2rem;
   max-width: 1200px;

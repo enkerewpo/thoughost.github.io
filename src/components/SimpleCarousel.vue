@@ -195,7 +195,7 @@ export default defineComponent({
 }
 
 .arrow {
-    background: rgba(164, 164, 164, 0.7);
+    background: rgba(106, 106, 106, 0.7);
     border: none;
     color: #fff;
     font-size: 1.5rem;
