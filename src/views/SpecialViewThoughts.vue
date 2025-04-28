@@ -1,5 +1,11 @@
 <template>
   <div class="thoughts-view">
+
+  
+    <div class="title-section">
+      <h1>Thoughts</h1>
+    </div>
+
     <div class="cover-section">
       <img class="cover" src="@/assets/special/thoughts_cover.jpg" alt="Thoughts Cover">
     </div>
@@ -118,6 +124,22 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+.title-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #000000;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.title-section h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
 .thoughts-view {
   padding: 0;
   max-width: 100%;
