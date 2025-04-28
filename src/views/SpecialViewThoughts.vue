@@ -275,7 +275,7 @@ export default defineComponent({
 }
 
 .design-image-item img {
-  width: 600px;
+  width: 40%;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
