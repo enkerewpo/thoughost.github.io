@@ -130,7 +130,6 @@ export default defineComponent({
   margin-bottom: 2rem;
   background-color: #000000;
   padding: 2rem;
-  border-radius: 8px;
 }
 
 .title-section h1 {
