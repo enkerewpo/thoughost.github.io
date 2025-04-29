@@ -1,37 +1,39 @@
 <template>
     <div class="simple-carousel" @mouseenter="pauseAutoRotate" @mouseleave="startAutoRotate">
+        <div class="page-list">
+            <div v-for="(item, index) in items" 
+                 :key="index" 
+                 :class="['page-item', { active: currentIndex === index }]"
+                 @click="goToSlide(index)">
+                {{ item.title }}
+            </div>
+        </div>
         <button class="arrow left" @click="prev" :disabled="currentIndex === 0">&lt;</button>
         <div class="card">
             <div class="quote-start"></div>
             <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
-            <transition :name="transitionName" @before-enter="pauseContentAnimation" @after-enter="resumeContentAnimation">
-                <div :key="currentIndex" class="card-content">
-                    <div class="content-wrapper" :class="{ 'animate-content': !isTransitioning }">
-                        <div class="left-section">
-                            <slot name="title" :item="items[currentIndex]">
-                                <h3>{{ items[currentIndex].title }}</h3>
-                                <p v-if="items[currentIndex].subtitle" class="subtitle">{{ items[currentIndex].subtitle }}</p>
-                            </slot>
-                        </div>
-                        <div class="right-section">
-                            <slot name="content" :item="items[currentIndex]">
-                                <p>{{ items[currentIndex].content }}</p>
-                            </slot>
-                        </div>
+            <div class="carousel-container">
+                <div class="left-section">
+                    <div class="title-content">
+                        <transition-group name="fade-title">
+                            <div :key="currentIndex" class="title-wrapper">
+                                <slot name="title" :item="items[currentIndex]">
+                                    <h3>{{ items[currentIndex].title }}</h3>
+                                    <p v-if="items[currentIndex].subtitle" class="subtitle">{{ items[currentIndex].subtitle }}</p>
+                                </slot>
+                            </div>
+                        </transition-group>
                     </div>
                 </div>
-            </transition>
-            <div class="indicators">
-                <div v-for="(item, index) in items" :key="index" class="indicator-item">
-                    <transition name="fade">
-                        <div v-if="hoverIndex === index || currentIndex === index" 
-                            :class="['hover-title', { 'current-title': currentIndex === index }]">{{ item.title }}</div>
+                
+                <div class="right-section">
+                    <transition name="fade" mode="out-in" @before-leave="onBeforeContentLeave" @after-enter="onAfterContentEnter">
+                        <div :key="currentIndex" class="content-wrapper">
+                            <slot name="content" :item="items[currentIndex]">
+                                <p v-for="(line, index) in items[currentIndex].content" :key="index" :class="{ 'vspace': line === '' }">{{ line }}</p>
+                            </slot>
+                        </div>
                     </transition>
-                    <button class="indicator-dot"
-                        :class="{ active: currentIndex === index }" 
-                        @click="goToSlide(index)"
-                        @mouseenter="hoverIndex = index"
-                        @mouseleave="hoverIndex = -1"></button>
                 </div>
             </div>
         </div>
@@ -60,15 +62,27 @@ export default defineComponent({
         let autoRotateTimer: number | null = null;
         const progress = ref(100);
         let progressTimer: number | null = null;
-        const hoverIndex = ref(-1);
         const isTransitioning = ref(false);
+        const forceHideContent = ref(false);
+
+        const onBeforeContentLeave = () => {
+            forceHideContent.value = true;
+        };
+
+        const onAfterContentEnter = () => {
+            forceHideContent.value = false;
+        };
 
         const pauseContentAnimation = () => {
             isTransitioning.value = true;
+            forceHideContent.value = true;
         };
 
         const resumeContentAnimation = () => {
             isTransitioning.value = false;
+            setTimeout(() => {
+                forceHideContent.value = false;
+            }, 400);
         };
 
         const updateProgress = () => {
@@ -164,10 +178,12 @@ export default defineComponent({
             startAutoRotate,
             pauseAutoRotate,
             progress,
-            hoverIndex,
             isTransitioning,
+            forceHideContent,
             pauseContentAnimation,
-            resumeContentAnimation
+            resumeContentAnimation,
+            onBeforeContentLeave,
+            onAfterContentEnter
         };
     }
 });
@@ -194,11 +210,11 @@ export default defineComponent({
     box-shadow: none;
     padding: 2.5rem 2.5rem 2rem 2.5rem;
     width: 100%;
-    height: 500px;
+    height: 600px;
     min-width: 100%;
     max-width: 100%;
-    min-height: 500px;
-    max-height: 500px;
+    min-height: 600px;
+    max-height: 600px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -279,18 +295,80 @@ export default defineComponent({
     z-index: 2;
 }
 
-.card-content {
+.carousel-container {
+    display: flex;
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 4rem;
     position: relative;
     z-index: 3;
+}
+
+.left-section {
+    flex: 0 0 35%;
+    position: relative;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title-content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    text-align: right;
+    padding-right: 2rem;
+    height: 100px;
+    overflow: hidden;
+}
+
+.title-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.title-content h3 {
+    transition: opacity 0.6s ease;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.title-content .subtitle {
+    transition: opacity 0.6s ease;
+    transition-delay: 0.2s;
+    margin: 0.7rem 0 0 0;
+    line-height: 1.4;
+}
+
+.right-section {
+    flex: 0 0 45%;
+    text-align: left;
+    padding-left: 2rem;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    padding-right: 2rem;
+}
+
+.content-wrapper {
+    position: absolute;
     width: 100%;
-    height: 100%;
+    box-sizing: border-box;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-height: 100%;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    transition: all 0.8s ease;
 }
 
 .card:hover {
@@ -304,12 +382,34 @@ export default defineComponent({
     font-weight: 700;
     margin-bottom: 0.7rem;
     color: #ffffff;
+    font-family: 'Poppins', 'Noto Sans SC', sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.card h3 span {
+    display: inline-block;
+}
+
+.card h3 span:not(:last-child) {
+    margin-right: 0.3em;
 }
 
 .card p {
     font-size: 1rem;
     margin: 0.2rem 0;
     color: #d0d0d0;
+    font-family: 'Noto Sans SC', sans-serif;
+    letter-spacing: 0.02em;
+    word-spacing: 0.1em;
+    line-height: 1.6;
+}
+
+.card p span {
+    display: inline-block;
+}
+
+.card p span:not(:last-child) {
+    margin-right: 0.3em;
 }
 
 .card p.subtitle {
@@ -317,11 +417,15 @@ export default defineComponent({
     font-weight: 400;
     font-style: italic;
     margin-bottom: 1rem;
+    font-family: 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
 }
 
 .card p:last-child {
     font-size: 0.95rem;
     color: #e0e0e0;
+    font-family: 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
 }
 
 .arrow {
@@ -400,190 +504,12 @@ export default defineComponent({
     }
 }
 
-.content-wrapper {
-    width: 90%;
-    max-width: 1400px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 4rem;
-    margin: 0 auto;
-    padding-left: 5%;
-    position: relative;
-    will-change: transform, opacity;
-    animation: contentSlide 25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes contentSlide {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    85% {
-        transform: translateX(-2%);
-        opacity: 1;
-    }
-    85.1% {
-        transform: translateX(0);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.slide-left-enter-active,
-.slide-left-leave-active,
-.slide-right-enter-active,
-.slide-right-leave-active {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.slide-left-enter-from {
-    transform: translateX(15%);
-    opacity: 0;
-}
-
-.slide-left-leave-to {
-    transform: translateX(-15%);
-    opacity: 0;
-}
-
-.slide-right-enter-from {
-    transform: translateX(-15%);
-    opacity: 0;
-}
-
-.slide-right-leave-to {
-    transform: translateX(15%);
-    opacity: 0;
-}
-
-.left-section {
-    flex: 0 0 40%;
-    text-align: right;
-    padding-right: 2rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.right-section {
-    flex: 0 0 45%;
-    text-align: left;
-    padding-left: 2rem;
-}
-
-.indicators {
-    position: absolute;
-    bottom: 1.2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.8rem;
-    z-index: 10;
-    background: rgba(26, 26, 26, 0.9);
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.indicator-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hover-title {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 0.5rem;
-}
-
-.current-title {
-    background: rgba(0, 0, 0, 0.5);
-    color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.current-title::after {
-    border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-    transform: translate(-50%, 10px);
-}
-
-.fade-enter-to,
-.fade-leave-from {
-    opacity: 1;
-    transform: translate(-50%, 0);
-}
-
-.hover-title::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-}
-
+.indicators,
+.indicator-item,
+.hover-title,
+.current-title,
 .indicator-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-    position: relative;
-}
-
-.indicator-dot::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: transparent;
-}
-
-.indicator-dot:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.2);
-}
-
-.indicator-dot.active {
-    background: #ffffff;
-    transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    display: none;
 }
 
 .progress-bar {
@@ -609,5 +535,160 @@ export default defineComponent({
     transform: scaleX(var(--progress, 1));
     transition: transform 0.1s linear;
     filter: blur(1px);
+}
+
+.vspace {
+    height: 1.5rem;
+    margin: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+    display: none;
+}
+
+.slide-left-enter-from,
+.slide-left-leave-to,
+.slide-right-enter-from,
+.slide-right-leave-to,
+.slide-left-enter-to,
+.slide-right-enter-to,
+.slide-left-leave-from,
+.slide-right-leave-from {
+    display: none;
+}
+
+.content-wrapper > p {
+    margin: 0.2rem 0;
+    text-align: left;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    letter-spacing: 0.02em;
+    word-spacing: 0.1em;
+    transition: all 0.8s ease;
+}
+
+.slide-left-enter-active > p,
+.slide-left-leave-active > p,
+.slide-right-enter-active > p,
+.slide-right-leave-active > p {
+    margin: 0.2rem 0;
+    text-align: left;
+}
+
+.fade-content-enter-active {
+    transition: all 0.8s ease;
+    transition-delay: 0.6s;
+}
+
+.fade-content-enter-from {
+    opacity: 0;
+}
+
+.fade-content-leave-active {
+    transition: all 0.4s ease;
+}
+
+.fade-content-leave-to {
+    opacity: 0;
+}
+
+.content-wrapper::-webkit-scrollbar {
+    width: 4px;
+}
+
+.content-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.content-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.content-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-title-enter-active,
+.fade-title-leave-active {
+    transition: opacity 0.6s ease;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-title-enter-from,
+.fade-title-leave-to {
+    opacity: 0;
+}
+
+.fade-title-enter-to,
+.fade-title-leave-from {
+    opacity: 1;
+}
+
+.page-list {
+    position: absolute;
+    top: 6rem;
+    left: 2rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.8rem;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-item {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.page-item:hover {
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(2px);
+}
+
+.page-item.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 </style>

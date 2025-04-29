@@ -103,20 +103,123 @@ export default defineComponent({
   components: { SimpleCarousel },
   setup() {
     const musicCards = [
-      { title: 'VeetaCrush', content: '占位段落', subtitle: 'TR 1: palette ii' },
-      { title: 'Joulez', content: '占位段落', subtitle: 'TR 2: Awake' },
-      { title: '潮音きつね', content: '占位段落', subtitle: 'TR 3: 幽けきルミノールライト' },
-      { title: '望月真白', content: '占位段落', subtitle: 'TR 4: Lucidandelion' },
-      { title: 'Aki Sz', content: '占位段落', subtitle: 'TR 5: Titania' },
-      { title: 'かたぎり', content: '占位段落', subtitle: 'TR 6: December' },
-      { title: 'wheatfox', content: '尝试做了一点atmospheric的liquid funk，在采样和音色上主要考虑了urban的氛围感，并且塞了一个小彩蛋（划掉），谢谢大家♥', subtitle: 'TR 7: 6 p.m.' },
-      { title: 'Nirotiy', content: '占位段落', subtitle: 'TR 8: Voix sacrée' },
-      { title: '桃罐', content: '占位段落', subtitle: 'TR 9: 曇天' },
-      { title: 'Rayven', content: '占位段落', subtitle: 'TR 10: Epilogue' }
+      // { 
+      //   title: 'VeetaCrush', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 1: palette ii' 
+      // },
+      // { 
+      //   title: 'Joulez', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 2: Awake' 
+      // },
+      { 
+        title: '潮音きつね', 
+        content: [
+          '最近写techno都比较trance…总之是以某款酒为灵感写的幻之乐曲，',
+          '最后取了鲁米诺的微光为要传达的意象。'
+        ], 
+        subtitle: 'TR 3: 幽けきルミノールライト' 
+      },
+      { 
+        title: '望月真白', 
+        content: [
+          '企划本身去年秋M3之前应该就有在说了，构思到实际开始写沉淀了好几个月，一直在听I\'ve sound还有各种galgame配乐',
+          '慢慢地就把reference track定成了这两首——',
+          'Taishi写给すぽコンのJet Loser, 以及和青葉りんご合作砖的inst曲The Inner Gaze-Will-',
+          '冲劲满满的碎拍和飘渺悠远的氛围感，虚幻飘渺的合成器与钢琴是我一直想试着做的声音',
+          '花了很多心血，但做出来后离想实现的效果还有距离，所以还会继续努力的。'
+        ], 
+        subtitle: 'TR 4: Lucidandelion' 
+      },
+      // { 
+      //   title: 'Aki Sz', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 5: Titania' 
+      // },
+      // { 
+      //   title: 'かたぎり', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 6: December' 
+      // },
+      { 
+        title: 'wheatfox', 
+        content: [
+          '尝试做了一点atmospheric的liquid funk，',
+          '在采样和音色上主要考虑了urban的氛围感，',
+          '并且塞了一个小彩蛋（划掉），谢谢大家♥'
+        ], 
+        subtitle: 'TR 7: 6 p.m.' 
+      },
+      // { 
+      //   title: 'Nirotiy', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 8: Voix sacrée' 
+      // },
+      // { 
+      //   title: '桃罐', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 9: 曇天' 
+      // },
+      // { 
+      //   title: 'Rayven', 
+      //   content: [
+      //     '占位段落',
+      //     '占位段落',
+      //     '占位段落'
+      //   ], 
+      //   subtitle: 'TR 10: Epilogue' 
+      // }
     ]
     const artCards = [
-      { title: 'TARA#376', subtitle: 'Illustration', content: '占位段落' },
-      { title: 'Konseki Takane', subtitle: 'Art Direction & Design', content: '占位段落' }
+      { 
+        title: 'TARA#376', 
+        subtitle: 'Illustration', 
+        content: [
+          '很高兴负责了本次专辑的封面插画和角色设计。',
+          '自三年前开始了解Thoughost和他们的作品，并以公募形式参与过2022年的"蒼"合集，也画过一些fanart。',
+          '这次能参与新作的插画，真的非常高兴。',
+          '',
+          '因为是想灵的新系列，未来有着以同一角色展现不同的专辑主题的目的，所以先决定了角色设计。Konseki给出的设计方向非常明确，所以没有花太长时间得出最终结果。如你所见非常合适！',
+          '封面插图方面，由于这是首次针对专辑考虑构图，加上我并不算擅长这次需求的风格，尝试了非常非常多次。总之最后还是努力地找到了适合的美术方向。',
+          '',
+          '虽然最终结果可能仍旧不尽人意，看得出来缺乏专业的经验和技术，但我觉得是一个好的开始。',
+          '希望今后也能和想灵，还有thoughts系列一起进步！'
+        ] 
+      },
+      { 
+        title: 'Konseki Takane', 
+        subtitle: 'Art Direction & Design', 
+        content: [
+          '占位段落',
+          '占位段落',
+          '占位段落'
+        ] 
+      }
     ]
     return { musicCards, artCards }
   }
@@ -226,7 +329,7 @@ export default defineComponent({
   line-height: 1.6;
   text-align: center;
   color: #666666;
-  max-width: 800px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -293,7 +396,7 @@ export default defineComponent({
 }
 
 .design-image-item img {
-  width: 40%;
+  width: 30%;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
