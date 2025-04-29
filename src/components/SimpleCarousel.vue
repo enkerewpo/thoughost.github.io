@@ -298,8 +298,8 @@ export default defineComponent({
 .carousel-container {
     display: flex;
     left: 1em;
-    width: 90%;
-    max-width: 1600px;
+    width: 95%;
+    max-width: 1800px;
     margin: 0 auto;
     gap: 4rem;
     position: relative;
