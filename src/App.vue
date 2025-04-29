@@ -24,9 +24,9 @@ export default {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto tg-font-10">
         <!-- navbar item (text) -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a target="_top" href="/project" style="color:#ff0000">NEXT PROJECT</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a target="_top" href="/releases">DISCOGRAPHY</a>
         </li>
