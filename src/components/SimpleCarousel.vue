@@ -5,16 +5,33 @@
             <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
             <transition :name="transitionName">
                 <div :key="currentIndex" class="card-content">
-                    <slot :item="items[currentIndex]">
-                        <h3>{{ items[currentIndex].title }}</h3>
-                        <p v-if="items[currentIndex].subtitle" class="subtitle">{{ items[currentIndex].subtitle }}</p>
-                        <p>{{ items[currentIndex].content }}</p>
-                    </slot>
+                    <div class="content-wrapper">
+                        <div class="left-section">
+                            <slot name="title" :item="items[currentIndex]">
+                                <h3>{{ items[currentIndex].title }}</h3>
+                                <p v-if="items[currentIndex].subtitle" class="subtitle">{{ items[currentIndex].subtitle }}</p>
+                            </slot>
+                        </div>
+                        <div class="right-section">
+                            <slot name="content" :item="items[currentIndex]">
+                                <p>{{ items[currentIndex].content }}</p>
+                            </slot>
+                        </div>
+                    </div>
                 </div>
             </transition>
             <div class="indicators">
-                <button v-for="(_, index) in items" :key="index" class="indicator-dot"
-                    :class="{ active: currentIndex === index }" @click="goToSlide(index)"></button>
+                <div v-for="(item, index) in items" :key="index" class="indicator-item">
+                    <transition name="fade">
+                        <div v-if="hoverIndex === index || currentIndex === index" 
+                            :class="['hover-title', { 'current-title': currentIndex === index }]">{{ item.title }}</div>
+                    </transition>
+                    <button class="indicator-dot"
+                        :class="{ active: currentIndex === index }" 
+                        @click="goToSlide(index)"
+                        @mouseenter="hoverIndex = index"
+                        @mouseleave="hoverIndex = -1"></button>
+                </div>
             </div>
         </div>
         <button class="arrow right" @click="next" :disabled="currentIndex === items.length - 1">&gt;</button>
@@ -42,6 +59,7 @@ export default defineComponent({
         let autoRotateTimer: number | null = null;
         const progress = ref(100);
         let progressTimer: number | null = null;
+        const hoverIndex = ref(-1);
 
         const updateProgress = () => {
             const startTime = Date.now();
@@ -135,7 +153,8 @@ export default defineComponent({
             goToSlide,
             startAutoRotate,
             pauseAutoRotate,
-            progress
+            progress,
+            hoverIndex
         };
     }
 });
@@ -267,6 +286,30 @@ export default defineComponent({
     }
 }
 
+.content-wrapper {
+    width: 90%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4rem;
+    margin: 0 auto;
+    padding-left: 5%;
+}
+
+.left-section {
+    flex: 0 0 40%;
+    text-align: right;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.right-section {
+    flex: 0 0 45%;
+    text-align: left;
+    padding-left: 2rem;
+}
+
 .card-content {
     position: absolute;
     width: 100%;
@@ -316,24 +359,97 @@ export default defineComponent({
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
     z-index: 10;
     background: rgba(26, 26, 26, 0.9);
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 30px;
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.indicator-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hover-title {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.5rem;
+}
+
+.current-title {
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.current-title::after {
+    border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.hover-title::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
 .indicator-dot {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
+    position: relative;
+}
+
+.indicator-dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
 }
 
 .indicator-dot:hover {
@@ -349,13 +465,36 @@ export default defineComponent({
 
 @media (max-width: 900px) {
     .indicators {
-        bottom: 0.5rem;
-        padding: 0.3rem;
+        padding: 0.6rem 1.2rem;
+        gap: 0.6rem;
     }
 
     .indicator-dot {
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
+    }
+
+    .indicator-dot::before {
+        width: 16px;
+        height: 16px;
+    }
+
+    .content-wrapper {
+        width: 90%;
+        flex-direction: column;
+        gap: 2rem;
+        padding-left: 0;
+    }
+
+    .left-section,
+    .right-section {
+        flex: 0 0 100%;
+        padding: 0;
+        border-right: none;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
     }
 }
 

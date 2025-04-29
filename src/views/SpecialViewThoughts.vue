@@ -103,16 +103,16 @@ export default defineComponent({
   components: { SimpleCarousel },
   setup() {
     const musicCards = [
-      { title: 'VeetaCrush', content: '占位段落', subtitle: 'TR01: palette ii' },
-      { title: 'Joulez', content: '占位段落', subtitle: 'TR02: Awake' },
-      { title: '潮音きつね', content: '占位段落', subtitle: 'TR03: 幽けきルミノールライト' },
-      { title: '望月真白', content: '占位段落', subtitle: 'TR04: Lucidandelion' },
-      { title: 'Aki Sz', content: '占位段落', subtitle: 'TR05: Titania' },
-      { title: 'かたぎり', content: '占位段落', subtitle: 'TR06: December' },
-      { title: 'wheatfox', content: '占位段落', subtitle: 'TR07: 6 p.m.' },
-      { title: 'Nirotiy', content: '占位段落', subtitle: 'TR08: Voix sacrée' },
-      { title: '桃罐', content: '占位段落', subtitle: 'TR09: 曇天' },
-      { title: 'Rayven', content: '占位段落', subtitle: 'TR10: Epilogue' }
+      { title: 'VeetaCrush', content: '占位段落', subtitle: 'TR 1: palette ii' },
+      { title: 'Joulez', content: '占位段落', subtitle: 'TR 2: Awake' },
+      { title: '潮音きつね', content: '占位段落', subtitle: 'TR 3: 幽けきルミノールライト' },
+      { title: '望月真白', content: '占位段落', subtitle: 'TR 4: Lucidandelion' },
+      { title: 'Aki Sz', content: '占位段落', subtitle: 'TR 5: Titania' },
+      { title: 'かたぎり', content: '占位段落', subtitle: 'TR 6: December' },
+      { title: 'wheatfox', content: '尝试做了一点atmospheric的liquid funk，在采样和音色上主要考虑了urban的氛围感，并且塞了一个比较明显小彩蛋（划掉），谢谢大家♥', subtitle: 'TR 7: 6 p.m.' },
+      { title: 'Nirotiy', content: '占位段落', subtitle: 'TR 8: Voix sacrée' },
+      { title: '桃罐', content: '占位段落', subtitle: 'TR 9: 曇天' },
+      { title: 'Rayven', content: '占位段落', subtitle: 'TR 10: Epilogue' }
     ]
     const artCards = [
       { title: 'TARA#376', subtitle: 'Illustration', content: '占位段落' },
@@ -128,8 +128,22 @@ export default defineComponent({
 .title-section {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  background-color: #000000;
-  padding: 2rem;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  padding: 4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.title-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
 }
 
 .title-section h1 {
@@ -145,27 +159,29 @@ export default defineComponent({
   margin: 0;
   font-family: 'Poppins', 'Noto Sans JP', 'Noto Sans SC', sans-serif;
   text-align: center;
-  background: #ffffff;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
   color: #333333;
 }
 
 .cover-section {
   margin-bottom: 0;
   text-align: center;
-  padding: 2rem;
+  padding: 4rem;
   background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
 .cover {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
 }
 
 .cover:hover {
-  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
 .main-sections {
@@ -179,10 +195,13 @@ export default defineComponent({
 .main-section {
   background: #ffffff;
   border-radius: 0;
-  padding: 2rem;
+  padding: 3rem;
   width: 100%;
   max-width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .main-section.scrollable {
@@ -191,12 +210,13 @@ export default defineComponent({
 }
 
 .sub-title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 1000;
-  line-height: 2rem;
-  margin-bottom: 1.5rem;
+  line-height: 2.2rem;
+  margin-bottom: 2rem;
   text-align: center;
   color: #333333;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .main-section.scrollable .sub-title {
@@ -205,11 +225,13 @@ export default defineComponent({
 }
 
 .content {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: center;
   color: #666666;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .story-item {
