@@ -306,7 +306,7 @@ export default defineComponent({
 }
 
 .left-section {
-    flex: 0 0 35%;
+    flex: 0 0 30%;
     position: relative;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -345,13 +345,12 @@ export default defineComponent({
 }
 
 .right-section {
-    flex: 0 0 45%;
+    flex: 0 0 50%;
     text-align: left;
     padding-left: 2rem;
     min-height: 200px;
     position: relative;
-    overflow: hidden;
-    height: 400px;
+    height: 500px;
     display: flex;
     align-items: center;
     padding-right: 2rem;
@@ -361,10 +360,8 @@ export default defineComponent({
     position: absolute;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    max-height: 100%;
-    overflow-y: auto;
+    padding: 2rem 2rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -598,20 +595,12 @@ export default defineComponent({
 }
 
 .content-wrapper::-webkit-scrollbar {
-    width: 4px;
+    display: none;
 }
 
-.content-wrapper::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.content-wrapper::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-}
-
-.content-wrapper::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+.content-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .fade-enter-active,
