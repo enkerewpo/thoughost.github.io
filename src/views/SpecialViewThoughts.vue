@@ -18,11 +18,13 @@
         <div class="content">
           <div class="story-item">
             <h3>创作灵感</h3>
-            <p>占位字符</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
           <div class="story-item">
             <h3>制作历程</h3>
-            <p>占位字符</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </section>
@@ -334,14 +336,29 @@ export default defineComponent({
 }
 
 .story-item {
-  margin-bottom: 1.5rem;
-  text-align: center;
+  margin-bottom: 2rem;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .story-item h3 {
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: #333333;
+  text-align: left;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.story-item p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #666666;
+  text-align: left;
+  margin: 0.5rem 0;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .credits {

@@ -376,7 +376,7 @@ export default defineComponent({
 }
 
 .card h3 {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 0.7rem;
     color: #ffffff;
@@ -393,7 +393,7 @@ export default defineComponent({
 }
 
 .card p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 0.2rem 0;
     color: #d0d0d0;
     font-family: 'Noto Sans SC', sans-serif;
@@ -417,13 +417,7 @@ export default defineComponent({
     margin-bottom: 1rem;
     font-family: 'Noto Sans SC', sans-serif;
     line-height: 1.6;
-}
-
-.card p:last-child {
-    font-size: 0.95rem;
-    color: #e0e0e0;
-    font-family: 'Noto Sans SC', sans-serif;
-    line-height: 1.6;
+    font-size: 0.85rem;
 }
 
 .arrow {
@@ -567,7 +561,7 @@ export default defineComponent({
     margin: 0.2rem 0;
     text-align: left;
     font-family: 'Noto Sans SC', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: #e0e0e0;
     letter-spacing: 0.02em;
