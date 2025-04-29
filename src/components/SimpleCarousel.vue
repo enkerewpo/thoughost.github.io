@@ -2,6 +2,7 @@
     <div class="simple-carousel" @mouseenter="pauseAutoRotate" @mouseleave="startAutoRotate">
         <button class="arrow left" @click="prev" :disabled="currentIndex === 0">&lt;</button>
         <div class="card">
+            <div class="quote-start"></div>
             <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
             <transition :name="transitionName">
                 <div :key="currentIndex" class="card-content">
@@ -181,11 +182,11 @@ export default defineComponent({
     box-shadow: none;
     padding: 2.5rem 2.5rem 2rem 2.5rem;
     width: 100%;
-    height: 400px;
+    height: 500px;
     min-width: 100%;
     max-width: 100%;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 500px;
+    max-height: 500px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -195,6 +196,89 @@ export default defineComponent({
     position: relative;
     overflow: hidden;
     border: none;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.08) 1px, 
+            transparent 1px) 0 0 / 100px 100px,
+        linear-gradient(0deg, 
+            rgba(255, 255, 255, 0.08) 1px, 
+            transparent 1px) 0 0 / 100px 100px,
+        linear-gradient(45deg, 
+            rgba(255, 255, 255, 0.05) 25%, 
+            transparent 25%, 
+            transparent 50%, 
+            rgba(255, 255, 255, 0.05) 50%, 
+            rgba(255, 255, 255, 0.05) 75%, 
+            transparent 75%, 
+            transparent) 0 0 / 400px 400px;
+    animation: moveBackground 30s linear infinite;
+    z-index: 1;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 100px 0, 0 100px, 400px 0;
+    }
+}
+
+.card::after {
+    content: "」";
+    position: absolute;
+    font-size: 8rem;
+    font-family: serif;
+    color: rgba(255, 255, 255, 0.3);
+    line-height: 1;
+    z-index: 2;
+    bottom: 2rem;
+    right: 1rem;
+}
+
+.card .quote-start::before {
+    content: "「";
+    position: absolute;
+    font-size: 8rem;
+    font-family: serif;
+    color: rgba(255, 255, 255, 0.3);
+    line-height: 1;
+    z-index: 2;
+    top: 1rem;
+    left: 1rem;
+}
+
+.card .quote-start {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.card-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .card:hover {
@@ -268,21 +352,39 @@ export default defineComponent({
 
 @media (max-width: 900px) {
     .card {
-        padding: 1rem;
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        height: 220px;
-        min-height: 160px;
-        max-height: 220px;
+        padding: 1.5rem;
+        height: auto;
+        min-height: 500px;
+        max-height: none;
     }
 
     .card h3 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
-    .arrow {
-        font-size: 1.5rem;
+    .card p {
+        font-size: 0.9rem;
+    }
+
+    .card p.subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .content-wrapper {
+        width: 100%;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .left-section,
+    .right-section {
+        flex: 0 0 100%;
+        padding: 0;
+        border-right: none;
+        text-align: center;
     }
 }
 
@@ -295,6 +397,28 @@ export default defineComponent({
     gap: 4rem;
     margin: 0 auto;
     padding-left: 5%;
+    position: relative;
+    animation: contentSlide 25s linear infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes contentSlide {
+    0% {
+        transform: translateX(10%);
+        opacity: 1;
+    }
+    85% {
+        transform: translateX(-2%);
+        opacity: 1;
+    }
+    85.1% {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(10%);
+        opacity: 1;
+    }
 }
 
 .left-section {
@@ -310,46 +434,33 @@ export default defineComponent({
     padding-left: 2rem;
 }
 
-.card-content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-}
-
 .slide-left-enter-active,
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-    transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
 .slide-left-enter-from {
-    transform: translateX(50%);
+    transform: translateX(30%);
     opacity: 0;
 }
 
 .slide-left-leave-to {
-    transform: translateX(-50%);
+    transform: translateX(-30%);
     opacity: 0;
 }
 
 .slide-right-enter-from {
-    transform: translateX(-50%);
+    transform: translateX(-30%);
     opacity: 0;
 }
 
 .slide-right-leave-to {
-    transform: translateX(50%);
+    transform: translateX(30%);
     opacity: 0;
 }
 
@@ -461,41 +572,6 @@ export default defineComponent({
     background: #ffffff;
     transform: scale(1.2);
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
-
-@media (max-width: 900px) {
-    .indicators {
-        padding: 0.6rem 1.2rem;
-        gap: 0.6rem;
-    }
-
-    .indicator-dot {
-        width: 7px;
-        height: 7px;
-    }
-
-    .indicator-dot::before {
-        width: 16px;
-        height: 16px;
-    }
-
-    .content-wrapper {
-        width: 90%;
-        flex-direction: column;
-        gap: 2rem;
-        padding-left: 0;
-    }
-
-    .left-section,
-    .right-section {
-        flex: 0 0 100%;
-        padding: 0;
-        border-right: none;
-    }
-
-    .card h3 {
-        font-size: 1.3rem;
-    }
 }
 
 .progress-bar {

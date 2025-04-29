@@ -249,7 +249,7 @@ export default defineComponent({
 }
 
 .credit-group {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1);c */
   padding-bottom: 1rem;
   width: 100%;
   text-align: center;
