@@ -4,9 +4,9 @@
         <div class="card">
             <div class="quote-start"></div>
             <div class="progress-bar" :style="{ width: `${progress}%` }"></div>
-            <transition :name="transitionName">
+            <transition :name="transitionName" @before-enter="pauseContentAnimation" @after-enter="resumeContentAnimation">
                 <div :key="currentIndex" class="card-content">
-                    <div class="content-wrapper">
+                    <div class="content-wrapper" :class="{ 'animate-content': !isTransitioning }">
                         <div class="left-section">
                             <slot name="title" :item="items[currentIndex]">
                                 <h3>{{ items[currentIndex].title }}</h3>
@@ -61,6 +61,15 @@ export default defineComponent({
         const progress = ref(100);
         let progressTimer: number | null = null;
         const hoverIndex = ref(-1);
+        const isTransitioning = ref(false);
+
+        const pauseContentAnimation = () => {
+            isTransitioning.value = true;
+        };
+
+        const resumeContentAnimation = () => {
+            isTransitioning.value = false;
+        };
 
         const updateProgress = () => {
             const startTime = Date.now();
@@ -155,7 +164,10 @@ export default defineComponent({
             startAutoRotate,
             pauseAutoRotate,
             progress,
-            hoverIndex
+            hoverIndex,
+            isTransitioning,
+            pauseContentAnimation,
+            resumeContentAnimation
         };
     }
 });
@@ -398,13 +410,13 @@ export default defineComponent({
     margin: 0 auto;
     padding-left: 5%;
     position: relative;
-    animation: contentSlide 25s linear infinite;
     will-change: transform, opacity;
+    animation: contentSlide 25s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes contentSlide {
     0% {
-        transform: translateX(10%);
+        transform: translateX(0);
         opacity: 1;
     }
     85% {
@@ -412,13 +424,43 @@ export default defineComponent({
         opacity: 1;
     }
     85.1% {
-        transform: translateX(10%);
+        transform: translateX(0);
         opacity: 0;
     }
     100% {
-        transform: translateX(10%);
+        transform: translateX(0);
         opacity: 1;
     }
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-left-enter-from {
+    transform: translateX(15%);
+    opacity: 0;
+}
+
+.slide-left-leave-to {
+    transform: translateX(-15%);
+    opacity: 0;
+}
+
+.slide-right-enter-from {
+    transform: translateX(-15%);
+    opacity: 0;
+}
+
+.slide-right-leave-to {
+    transform: translateX(15%);
+    opacity: 0;
 }
 
 .left-section {
@@ -432,36 +474,6 @@ export default defineComponent({
     flex: 0 0 45%;
     text-align: left;
     padding-left: 2rem;
-}
-
-.slide-left-enter-active,
-.slide-left-leave-active,
-.slide-right-enter-active,
-.slide-right-leave-active {
-    transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.slide-left-enter-from {
-    transform: translateX(30%);
-    opacity: 0;
-}
-
-.slide-left-leave-to {
-    transform: translateX(-30%);
-    opacity: 0;
-}
-
-.slide-right-enter-from {
-    transform: translateX(-30%);
-    opacity: 0;
-}
-
-.slide-right-leave-to {
-    transform: translateX(30%);
-    opacity: 0;
 }
 
 .indicators {
