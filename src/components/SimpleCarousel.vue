@@ -206,12 +206,13 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    width: 100vw;
+    width: 100%;
     margin: 0;
     background: #ffffff;
     min-height: 40vh;
     padding: 3rem 0 0 0;
     position: relative;
+    overflow: hidden;
 }
 
 .card {
@@ -328,14 +329,12 @@ export default defineComponent({
 
 .carousel-container {
     display: flex;
-    left: 1em;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     gap: 4rem;
     position: relative;
     z-index: 5;
-    margin-left: 20rem;
 }
 
 .left-section {
