@@ -3,7 +3,7 @@
 
   
     <div class="title-section">
-      <h1>Thoughts</h1>
+      <h1>thoughts</h1>
     </div>
 
     <div class="cover-section">
@@ -14,7 +14,7 @@
     
     <div class="main-sections">
       <section class="main-section">
-        <div class="sub-title">Thoughts 诞生幕后</div>
+        <div class="sub-title">thoughts 诞生幕后</div>
         <div class="content">
           <div class="story-item">
             <h3>创作灵感</h3>

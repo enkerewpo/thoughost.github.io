@@ -297,6 +297,7 @@ export default defineComponent({
 
 .carousel-container {
     display: flex;
+    left: 1em;
     width: 90%;
     max-width: 1600px;
     margin: 0 auto;
@@ -308,7 +309,7 @@ export default defineComponent({
 .left-section {
     flex: 0 0 30%;
     position: relative;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    /* border-right: 1px solid rgba(255, 255, 255, 0.1); */
 }
 
 .title-content {
@@ -428,31 +429,36 @@ export default defineComponent({
 .arrow {
     background: none;
     border: none;
-    color: #ffffff;
-    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 3rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    z-index: 2;
-    padding: 0;
+    z-index: 20;
+    padding: 1rem;
     width: auto;
     height: auto;
+    pointer-events: auto;
 }
 
 .arrow.left {
-    left: 1rem;
+    left: 240px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .arrow.right {
-    right: 1rem;
+    right: 240px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .arrow:hover {
-    color: #ffffff;
-    transform: scale(1.1);
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
     background: none;
     box-shadow: none;
 }
@@ -460,7 +466,7 @@ export default defineComponent({
 .arrow:disabled {
     opacity: 0.2;
     cursor: not-allowed;
-    transform: none;
+    transform: translateY(-50%);
 }
 
 @media (max-width: 900px) {
@@ -639,18 +645,14 @@ export default defineComponent({
 
 .page-list {
     position: absolute;
-    top: 6rem;
-    left: 2rem;
+    top: 10rem;
+    left: 10rem;
     z-index: 10;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    background: rgba(0, 0, 0, 0.6);
     padding: 0.8rem;
     border-radius: 12px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .page-item {
@@ -670,14 +672,11 @@ export default defineComponent({
 
 .page-item:hover {
     color: rgba(255, 255, 255, 0.95);
-    background: rgba(255, 255, 255, 0.08);
     transform: translateX(2px);
 }
 
 .page-item.active {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
     font-weight: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 </style>
