@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue';
 export default defineComponent({
     name: 'SimpleCarousel',
     props: {
@@ -64,6 +64,16 @@ export default defineComponent({
         let progressTimer: number | null = null;
         const isTransitioning = ref(false);
         const forceHideContent = ref(false);
+
+        const titleFontSize = computed(() => {
+            const currentTitle = items[currentIndex.value]?.title || '';
+            if (currentTitle.length > 20) {
+                return '1.4rem';
+            } else if (currentTitle.length > 15) {
+                return '1.6rem';
+            }
+            return '1.8rem';
+        });
 
         const onBeforeContentLeave = () => {
             forceHideContent.value = true;
@@ -183,7 +193,8 @@ export default defineComponent({
             pauseContentAnimation,
             resumeContentAnimation,
             onBeforeContentLeave,
-            onAfterContentEnter
+            onAfterContentEnter,
+            titleFontSize
         };
     }
 });
@@ -220,7 +231,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     border: none;
@@ -235,29 +246,49 @@ export default defineComponent({
     bottom: 0;
     background: 
         linear-gradient(90deg, 
-            rgba(255, 255, 255, 0.08) 1px, 
-            transparent 1px) 0 0 / 100px 100px,
+            rgba(255, 255, 255, 0.04) 1px, 
+            transparent 1px) 0 0 / 50px 50px,
         linear-gradient(0deg, 
-            rgba(255, 255, 255, 0.08) 1px, 
-            transparent 1px) 0 0 / 100px 100px,
-        linear-gradient(45deg, 
-            rgba(255, 255, 255, 0.05) 25%, 
+            rgba(255, 255, 255, 0.04) 1px, 
+            transparent 1px) 0 0 / 50px 50px,
+        linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.01) 8%, 
+            transparent 8%, 
+            transparent 12%, 
+            rgba(255, 255, 255, 0.01) 12%, 
+            rgba(255, 255, 255, 0.05) 18%, 
+            transparent 18%, 
             transparent 25%, 
-            transparent 50%, 
-            rgba(255, 255, 255, 0.05) 50%, 
-            rgba(255, 255, 255, 0.05) 75%, 
+            rgba(255, 255, 255, 0.05) 25%, 
+            rgba(255, 255, 255, 0.01) 32%, 
+            transparent 32%, 
+            transparent 40%, 
+            rgba(255, 255, 255, 0.03) 40%, 
+            rgba(255, 255, 255, 0.05) 48%, 
+            transparent 48%, 
+            transparent 58%, 
+            rgba(255, 255, 255, 0.01) 58%, 
+            rgba(255, 255, 255, 0.06) 65%, 
+            transparent 65%, 
             transparent 75%, 
-            transparent) 0 0 / 400px 400px;
-    animation: moveBackground 30s linear infinite;
+            rgba(255, 255, 255, 0.05) 75%, 
+            rgba(255, 255, 255, 0.03) 82%, 
+            transparent 82%, 
+            transparent 90%, 
+            rgba(255, 255, 255, 0.01) 90%, 
+            rgba(255, 255, 255, 0.05) 96%, 
+            transparent 90%, 
+            transparent) 0 0 / 2000px 2000px;
+    animation: moveBackground 200s linear infinite;
     z-index: 1;
 }
 
 @keyframes moveBackground {
-    0% {
+    100% {
         background-position: 0 0, 0 0, 0 0;
     }
-    100% {
-        background-position: 100px 0, 0 100px, 400px 0;
+    0% {
+        background-position: 50px 50px, 50px 50px, 2000px 0;
     }
 }
 
@@ -298,18 +329,19 @@ export default defineComponent({
 .carousel-container {
     display: flex;
     left: 1em;
-    width: 95%;
-    max-width: 1800px;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     gap: 4rem;
     position: relative;
-    z-index: 3;
+    z-index: 5;
+    margin-left: 20rem;
 }
 
 .left-section {
-    flex: 0 0 30%;
+    flex: 0 0 25%;
     position: relative;
-    /* border-right: 1px solid rgba(255, 255, 255, 0.1); */
+    max-width: 300px;
 }
 
 .title-content {
@@ -322,6 +354,7 @@ export default defineComponent({
     padding-right: 2rem;
     height: 100px;
     overflow: hidden;
+    max-width: 100%;
 }
 
 .title-wrapper {
@@ -330,12 +363,17 @@ export default defineComponent({
     left: 0;
     right: 0;
     bottom: 0;
+    max-width: 100%;
 }
 
 .title-content h3 {
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease, font-size 0.6s ease;
     margin: 0;
     line-height: 1.4;
+    font-size: v-bind(titleFontSize);
+    white-space: nowrap;
+    max-width: 100%;
+    text-align: right;
 }
 
 .title-content .subtitle {
@@ -346,7 +384,7 @@ export default defineComponent({
 }
 
 .right-section {
-    flex: 0 0 50%;
+    flex: 0 0 45%;
     text-align: left;
     padding-left: 2rem;
     min-height: 200px;
@@ -411,7 +449,7 @@ export default defineComponent({
 }
 
 .card p.subtitle {
-    color: #909090;
+    color: #9090909e;
     font-weight: 400;
     font-style: italic;
     margin-bottom: 1rem;
@@ -421,9 +459,9 @@ export default defineComponent({
 }
 
 .arrow {
-    background: none;
+    background: rgba(0, 0, 0, 0.3);
     border: none;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.553);
     font-size: 3rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -431,39 +469,49 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     position: absolute;
-    z-index: 20;
+    z-index: 100;
     padding: 1rem;
-    width: auto;
-    height: auto;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
     pointer-events: auto;
 }
 
 .arrow.left {
-    left: 240px;
+    left: 16rem;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .arrow.right {
-    right: 240px;
+    right: 16rem;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .arrow:hover {
+    background: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255, 0.9);
     transform: translateY(-50%) scale(1.05);
-    background: none;
-    box-shadow: none;
+}
+
+.arrow:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .arrow:disabled {
     opacity: 0.2;
     cursor: not-allowed;
     transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+    .simple-carousel {
+        padding: 1rem 0;
+        min-height: 30vh;
+    }
+
     .card {
         padding: 1.5rem;
         height: auto;
@@ -471,33 +519,145 @@ export default defineComponent({
         max-height: none;
     }
 
-    .card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
+    .card::after {
+        font-size: 4rem;
+        bottom: 1rem;
+        right: 0.5rem;
     }
 
-    .card p {
-        font-size: 0.9rem;
+    .card .quote-start::before {
+        font-size: 4rem;
+        top: 0.5rem;
+        left: 0.5rem;
     }
 
-    .card p.subtitle {
-        font-size: 0.85rem;
-        margin-bottom: 0.8rem;
+    .carousel-container {
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        padding: 0 1rem;
+        margin-left: 0;
+    }
+
+    .left-section {
+        flex: 0 0 auto;
+        width: 100%;
+        position: relative;
+        min-height: 80px;
+    }
+
+    .title-content {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        transform: none;
+        text-align: right;
+        padding-right: 0;
+        height: auto;
+        margin-bottom: 0;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        max-width: 80%;
+    }
+
+    .title-wrapper {
+        position: relative;
+        height: auto;
+    }
+
+    .title-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+        color: #ffffff;
+        line-height: 1.4;
+    }
+
+    .title-content .subtitle {
+        font-size: 0.8rem;
+        margin: 0;
+        color: #e0e0e0;
+        line-height: 1.4;
+    }
+
+    .right-section {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+        padding: 0;
+        margin-top: 3rem;
     }
 
     .content-wrapper {
-        width: 100%;
-        flex-direction: column;
-        gap: 1.5rem;
-        padding: 0;
+        position: relative;
+        padding: 1rem 0;
     }
 
-    .left-section,
-    .right-section {
-        flex: 0 0 100%;
-        padding: 0;
-        border-right: none;
-        text-align: center;
+    .arrow {
+        position: absolute;
+        font-size: 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .arrow.left {
+        left: 0.5rem;
+    }
+
+    .arrow.right {
+        right: 0.5rem;
+    }
+
+    .page-list {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 1rem;
+        min-height: 400px;
+    }
+
+    .card::after {
+        font-size: 3rem;
+        bottom: 0.5rem;
+        right: 0.3rem;
+    }
+
+    .card .quote-start::before {
+        font-size: 3rem;
+        top: 0.3rem;
+        left: 0.3rem;
+    }
+
+    .title-content {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.3rem 0.8rem;
+        max-width: 90%;
+    }
+
+    .title-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .title-content .subtitle {
+        font-size: 0.75rem;
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+    }
+
+    .arrow {
+        font-size: 1.8rem;
     }
 }
 
@@ -605,13 +765,13 @@ export default defineComponent({
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: all 0.3s ease;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
 }
 
 .fade-enter-to,
@@ -622,7 +782,7 @@ export default defineComponent({
 
 .fade-title-enter-active,
 .fade-title-leave-active {
-    transition: opacity 0.6s ease;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     position: absolute;
     width: 100%;
 }
@@ -640,8 +800,8 @@ export default defineComponent({
 .page-list {
     position: absolute;
     top: 10rem;
-    left: 10rem;
-    z-index: 10;
+    left: 8rem;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -650,7 +810,7 @@ export default defineComponent({
 }
 
 .page-item {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.204);
     font-size: 0.85rem;
     cursor: pointer;
     padding: 0.4rem 0.8rem;

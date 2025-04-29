@@ -90,6 +90,12 @@
               <span>Konseki Takane</span>
             </div>
           </div>
+          <div class="credit-group">
+            <h3>Special Page Web Design</h3>
+            <div class="credit-list">
+              <span>wheatfox</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>
