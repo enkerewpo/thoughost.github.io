@@ -5,16 +5,15 @@
     <div class="title-section">
       <h1>thoughts</h1>
     </div>
-
-    <div class="cover-section">
-      <img class="cover" src="@/assets/special/thoughts_cover.jpg" alt="Thoughts Cover">
-    </div>
-
-    <!-- <h1>Thoughts</h1> -->
+    
     
     <div class="main-sections">
       <section class="main-section">
         <div class="sub-title">thoughts 诞生幕后</div>
+        <!-- <div class="cover-section"> -->
+          <img class="cover" src="@/assets/special/thoughts_cover.jpg" alt="Thoughts Cover">
+        <!-- </div> -->
+        <div class="section-spacing"></div>
         <div class="content">
           <div class="story-item">
             <h3>创作灵感</h3>
@@ -31,10 +30,10 @@
 
       <section class="main-section scrollable">
         <div class="sub-title">音乐制作幕后</div>
+        <!-- <div class="section-spacing"></div> -->
         <SimpleCarousel :items="musicCards" :autoRotateInterval="30000" />
       </section>
 
-      <!-- 这里放一些设计相关的图 -->
       <section class="main-section">
         <div class="sub-title">设计图</div>
         <div class="design-images">
@@ -235,6 +234,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.section-spacing {
+  height: 2rem;
+}
 
 .title-section {
   margin-top: 2rem;
@@ -314,6 +316,13 @@ export default defineComponent({
 .main-section.scrollable {
   color: #000000;
   padding: 0;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.main-section.scrollable > *:not(.sub-title) {
+  position: relative;
+  z-index: 1;
 }
 
 .sub-title {
@@ -324,11 +333,32 @@ export default defineComponent({
   text-align: center;
   color: #333333;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .main-section.scrollable .sub-title {
   color: #000000;
-  padding: 2rem 2rem 0 2rem;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .content {

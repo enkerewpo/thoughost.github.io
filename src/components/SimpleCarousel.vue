@@ -210,7 +210,7 @@ export default defineComponent({
     margin: 0;
     background: #ffffff;
     min-height: 40vh;
-    padding: 2rem 0;
+    padding: 3rem 0 0 0;
     position: relative;
 }
 
