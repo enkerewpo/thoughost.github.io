@@ -109,7 +109,7 @@ export default defineComponent({
       { title: '望月真白', content: '占位段落', subtitle: 'TR 4: Lucidandelion' },
       { title: 'Aki Sz', content: '占位段落', subtitle: 'TR 5: Titania' },
       { title: 'かたぎり', content: '占位段落', subtitle: 'TR 6: December' },
-      { title: 'wheatfox', content: '尝试做了一点atmospheric的liquid funk，在采样和音色上主要考虑了urban的氛围感，并且塞了一个比较明显小彩蛋（划掉），谢谢大家♥', subtitle: 'TR 7: 6 p.m.' },
+      { title: 'wheatfox', content: '尝试做了一点atmospheric的liquid funk，在采样和音色上主要考虑了urban的氛围感，并且塞了一个小彩蛋（划掉），谢谢大家♥', subtitle: 'TR 7: 6 p.m.' },
       { title: 'Nirotiy', content: '占位段落', subtitle: 'TR 8: Voix sacrée' },
       { title: '桃罐', content: '占位段落', subtitle: 'TR 9: 曇天' },
       { title: 'Rayven', content: '占位段落', subtitle: 'TR 10: Epilogue' }
