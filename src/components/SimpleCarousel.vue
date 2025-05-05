@@ -543,6 +543,8 @@ export default defineComponent({
         width: 100%;
         position: relative;
         min-height: 80px;
+        margin-bottom: 1rem;
+        transition: all 0.8s ease;
     }
 
     .title-content {
@@ -559,11 +561,14 @@ export default defineComponent({
         padding: 0.5rem 1rem;
         border-radius: 8px;
         max-width: 80%;
+        backdrop-filter: blur(4px);
+        transition: all 0.8s ease;
     }
 
     .title-wrapper {
         position: relative;
         height: auto;
+        transform: none !important;
     }
 
     .title-content h3 {
@@ -571,6 +576,7 @@ export default defineComponent({
         margin-bottom: 0.3rem;
         color: #ffffff;
         line-height: 1.4;
+        transform: none !important;
     }
 
     .title-content .subtitle {
@@ -592,6 +598,7 @@ export default defineComponent({
     .content-wrapper {
         position: relative;
         padding: 1rem 0;
+        transform: none !important;
     }
 
     .arrow {
@@ -599,6 +606,7 @@ export default defineComponent({
         font-size: 2rem;
         width: 2.5rem;
         height: 2.5rem;
+        z-index: 20;
     }
 
     .arrow.left {
@@ -611,6 +619,43 @@ export default defineComponent({
 
     .page-list {
         display: none !important;
+    }
+
+    .fade-title-enter-active,
+    .fade-title-leave-active {
+        position: absolute;
+        width: auto;
+        max-width: 80%;
+        right: 1rem;
+        top: 1rem;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-title-enter-from,
+    .fade-title-leave-to {
+        opacity: 0;
+    }
+
+    .fade-title-enter-to,
+    .fade-title-leave-from {
+        opacity: 1;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .fade-enter-to,
+    .fade-leave-from {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -657,6 +702,23 @@ export default defineComponent({
 
     .arrow {
         font-size: 1.8rem;
+    }
+
+    .fade-title-enter-active,
+    .fade-title-leave-active {
+        right: 0.5rem;
+        top: 0.5rem;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-title-enter-from,
+    .fade-title-leave-to {
+        opacity: 0;
+    }
+
+    .fade-title-enter-to,
+    .fade-title-leave-from {
+        opacity: 1;
     }
 }
 
