@@ -25,30 +25,30 @@ export default defineConfig(({ command, mode }) => {
     },
     plugins: [
       vue(),
-      viteImagemin({
-        // https://github.com/vbenjs/vite-plugin-imagemin
-        optipng: {
-          optimizationLevel: 7,
-        },
-        mozjpeg: {
-          quality: 35,
-        },
-        pngquant: {
-          quality: [0.8, 0.9],
-          speed: 4,
-        },
-        svgo: {
-          plugins: [
-          {
-            name: 'removeViewBox',
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false,
-          },
-        ],
-        },
-      }),
+      // viteImagemin({
+      //   // https://github.com/vbenjs/vite-plugin-imagemin
+      //   optipng: {
+      //     optimizationLevel: 7,
+      //   },
+      //   mozjpeg: {
+      //     quality: 35,
+      //   },
+      //   pngquant: {
+      //     quality: [0.8, 0.9],
+      //     speed: 4,
+      //   },
+      //   svgo: {
+      //     plugins: [
+      //     {
+      //       name: 'removeViewBox',
+      //     },
+      //     {
+      //       name: 'removeEmptyAttrs',
+      //       active: false,
+      //     },
+      //   ],
+      //   },
+      // }),
     ],
     resolve: {
       alias: {

@@ -168,9 +168,11 @@ export default defineComponent({
       { 
         title: 'wheatfox', 
         content: [
-          '尝试做了一点atmospheric的liquid funk，',
-          '在采样和音色上主要考虑了urban的氛围感，',
-          '并且塞了一个小彩蛋（划掉），谢谢大家♥'
+          '尝试做了一点 atmospheric 的 liquid funk，',
+          '在采样和音色上主要考虑了 urban 的氛围感，声音参考：DualSide 的 impressesky 系列。',
+          '（PS：这个社团的大部分作品我还蛮喜欢的，但是从 bandcamp 上来看听众并不多，大家有兴趣可以关注一下他们的 bandcamp 和 M3 现场活动）',
+          '最后，这首曲子还塞了一个小彩蛋（划掉）。',
+          '谢谢大家♥'
         ], 
         subtitle: 'TR 7: 6 p.m.' 
       },
