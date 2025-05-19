@@ -10,7 +10,7 @@
         <!-- <div class="cover-section"> -->
         <img
           class="cover"
-          src="@/assets/special/thoughts_cover_high.jpg"
+          src="@/assets/special/thoughts_cover.jpg"
           alt="Thoughts Cover"
           @click="openPreview('@/assets/special/thoughts_cover_high.jpg')"
         />
