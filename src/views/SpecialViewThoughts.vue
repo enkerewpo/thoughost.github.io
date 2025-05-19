@@ -68,8 +68,8 @@
 
         <div
           style="
-            font-size: 1.4rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            font-weight: 500;
             line-height: 2.2rem;
             margin-bottom: 2rem;
           "
@@ -96,8 +96,8 @@
 
         <div
           style="
-            font-size: 1.4rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            font-weight: 500;
             line-height: 2.2rem;
             margin: 4rem 0 2rem 0;
           "
@@ -109,16 +109,16 @@
           <div class="design-image-item wide">
             <img
               src="@/assets/special/封面艺术全过程/2.人设三视图.png"
-              alt="Thoughts Art Character Design 1"
+              alt="Thoughts Art Character Design"
             />
-            <p>图：人设三视图 1</p>
+            <p>图：人设三视图</p>
           </div>
         </div>
 
         <div
           style="
-            font-size: 1.4rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            font-weight: 500;
             line-height: 2.2rem;
             margin: 4rem 0 2rem 0;
           "
@@ -152,8 +152,8 @@
 
         <div
           style="
-            font-size: 1.4rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            font-weight: 500;
             line-height: 2.2rem;
             margin: 4rem 0 2rem 0;
           "
@@ -192,17 +192,57 @@
           </div>
         </div>
 
+        <div
+          style="
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 2.2rem;
+            margin: 4rem 0 2rem 0;
+          "
+        >
+          封面设计
+        </div>
+
+        <div class="design-images">
+          <div class="design-image-item">
+            <img
+              src="@/assets/special/thoughts_cover.jpg"
+              alt="Thoughts Art Cover Design"
+            />
+            <p>图：封面设计</p>
+          </div>
+          <div class="design-image-item">
+            <img
+              src="@/assets/special/thoughts_background.png"
+              alt="Thoughts Art Cover Background"
+            />
+            <p>图：封面背景</p>
+          </div>
+        </div>
+
         <SimpleCarousel :items="artCards" :autoRotateInterval="30000" />
       </section>
 
       <section class="main-section">
         <!-- <div class="sub-title">Konseki Takane</div> -->
         <div style="margin-top: 3rem"></div>
-        <span style="font-size: 1.7rem; font-weight: 1000; line-height: 2.2rem; font-family: 'Poppins', sans-serif;"
+        <span
+          style="
+            font-size: 1.7rem;
+            font-weight: 1000;
+            line-height: 2.2rem;
+            font-family: 'Poppins', sans-serif;
+          "
           >Konseki Takane</span
         >
         <br />
-        <span style="font-size: 0.8rem; color: #666666; font-style: italic; font-family: 'Poppins', sans-serif;"
+        <span
+          style="
+            font-size: 0.8rem;
+            color: #666666;
+            font-style: italic;
+            font-family: 'Poppins', sans-serif;
+          "
           >Art Direction & Design</span
         >
         <!-- margin -->
@@ -507,7 +547,8 @@ export default defineComponent({
   padding: 0;
   max-width: 100%;
   margin: 0;
-  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   text-align: center;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
   color: #333333;
@@ -610,7 +651,8 @@ export default defineComponent({
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 .story-item h3 {
@@ -628,7 +670,8 @@ export default defineComponent({
   color: #666666;
   text-align: left;
   margin: 0.5rem 0;
-  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 .credits {
@@ -702,7 +745,7 @@ export default defineComponent({
 
 .design-image-item p {
   font-size: 0.9rem;
-  font-weight: 200;
+  /* font-weight: 00; */
   line-height: 1.8rem;
   margin-top: 1rem;
   text-align: center;
