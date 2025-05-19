@@ -56,7 +56,7 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const currentIndex = ref(0);
+        const currentIndex = ref(Math.floor(Math.random() * props.items.length));
         const transitionName = ref('slide-left');
         const items = props.items as any[];
         let autoRotateTimer: number | null = null;
