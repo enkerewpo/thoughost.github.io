@@ -445,7 +445,7 @@ export default defineComponent({
     const previewAlt = ref("");
 
     // Create a map of image paths to imported images
-    const imageMap = {
+    const imageMap: Record<string, string> = {
       "@/assets/special/thoughts_cover.jpg": thoughtsCover,
       "@/assets/special/thoughts_cover_high.jpg": thoughtsCoverHigh,
       "@/assets/special/thoughts_background.png": thoughtsBackground,
@@ -477,9 +477,12 @@ export default defineComponent({
         ? imagePath
         : imagePath.replace(".jpg", "_high.jpg").replace(".png", "_high.png");
       console.log(highResPath, imagePath);
-      previewImage.value = imageMap[highResPath];
-      previewAlt.value = "Image preview";
-      previewOpen.value = true;
+      const image = imageMap[highResPath];
+      if (image) {
+        previewImage.value = image;
+        previewAlt.value = "Image preview";
+        previewOpen.value = true;
+      }
     };
 
     const closePreview = () => {
