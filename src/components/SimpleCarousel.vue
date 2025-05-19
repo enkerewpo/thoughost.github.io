@@ -247,37 +247,37 @@ export default defineComponent({
     bottom: 0;
     background: 
         linear-gradient(90deg, 
-            rgba(255, 255, 255, 0.04) 1px, 
+            rgba(255, 255, 255, 0.08) 1px, 
             transparent 1px) 0 0 / 50px 50px,
         linear-gradient(0deg, 
-            rgba(255, 255, 255, 0.04) 1px, 
+            rgba(255, 255, 255, 0.08) 1px, 
             transparent 1px) 0 0 / 50px 50px,
         linear-gradient(90deg, 
-            rgba(255, 255, 255, 0.01) 8%, 
+            rgba(255, 255, 255, 0.03) 8%, 
             transparent 8%, 
             transparent 12%, 
-            rgba(255, 255, 255, 0.01) 12%, 
-            rgba(255, 255, 255, 0.05) 18%, 
+            rgba(255, 255, 255, 0.03) 12%, 
+            rgba(255, 255, 255, 0.08) 18%, 
             transparent 18%, 
             transparent 25%, 
-            rgba(255, 255, 255, 0.05) 25%, 
-            rgba(255, 255, 255, 0.01) 32%, 
+            rgba(255, 255, 255, 0.08) 25%, 
+            rgba(255, 255, 255, 0.03) 32%, 
             transparent 32%, 
             transparent 40%, 
-            rgba(255, 255, 255, 0.03) 40%, 
-            rgba(255, 255, 255, 0.05) 48%, 
+            rgba(255, 255, 255, 0.05) 40%, 
+            rgba(255, 255, 255, 0.08) 48%, 
             transparent 48%, 
             transparent 58%, 
-            rgba(255, 255, 255, 0.01) 58%, 
-            rgba(255, 255, 255, 0.06) 65%, 
+            rgba(255, 255, 255, 0.03) 58%, 
+            rgba(255, 255, 255, 0.09) 65%, 
             transparent 65%, 
             transparent 75%, 
-            rgba(255, 255, 255, 0.05) 75%, 
-            rgba(255, 255, 255, 0.03) 82%, 
+            rgba(255, 255, 255, 0.08) 75%, 
+            rgba(255, 255, 255, 0.05) 82%, 
             transparent 82%, 
             transparent 90%, 
-            rgba(255, 255, 255, 0.01) 90%, 
-            rgba(255, 255, 255, 0.05) 96%, 
+            rgba(255, 255, 255, 0.03) 90%, 
+            rgba(255, 255, 255, 0.08) 96%, 
             transparent 90%, 
             transparent) 0 0 / 2000px 2000px;
     animation: moveBackground 200s linear infinite;
@@ -458,10 +458,10 @@ export default defineComponent({
 }
 
 .arrow {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.1);
     border: none;
-    color: rgba(255, 255, 255, 0.553);
-    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -469,9 +469,9 @@ export default defineComponent({
     justify-content: center;
     position: absolute;
     z-index: 100;
-    padding: 1rem;
-    width: 3rem;
-    height: 3rem;
+    padding: 0.8rem;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     pointer-events: auto;
 }
@@ -489,8 +489,8 @@ export default defineComponent({
 }
 
 .arrow:hover {
-    background: rgba(0, 0, 0, 0.5);
-    color: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.5);
     transform: translateY(-50%) scale(1.05);
 }
 
@@ -499,10 +499,10 @@ export default defineComponent({
 }
 
 .arrow:disabled {
-    opacity: 0.2;
+    opacity: 0.1;
     cursor: not-allowed;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 1100px) {
@@ -603,9 +603,9 @@ export default defineComponent({
 
     .arrow {
         position: absolute;
-        font-size: 2rem;
-        width: 2.5rem;
-        height: 2.5rem;
+        font-size: 1.5rem;
+        width: 2rem;
+        height: 2rem;
         z-index: 20;
     }
 
@@ -701,7 +701,9 @@ export default defineComponent({
     }
 
     .arrow {
-        font-size: 1.8rem;
+        font-size: 1.2rem;
+        width: 1.8rem;
+        height: 1.8rem;
     }
 
     .fade-title-enter-active,

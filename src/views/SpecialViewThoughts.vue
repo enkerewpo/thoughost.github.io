@@ -10,8 +10,9 @@
         <!-- <div class="cover-section"> -->
         <img
           class="cover"
-          src="@/assets/special/thoughts_cover.jpg"
+          src="@/assets/special/thoughts_cover_high.jpg"
           alt="Thoughts Cover"
+          @click="openPreview('@/assets/special/thoughts_cover_high.jpg')"
         />
         <!-- </div> -->
         <div class="section-spacing"></div>
@@ -82,6 +83,11 @@
             <img
               src="@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png"
               alt="Thoughts Art Initial 1"
+              @click="
+                openPreview(
+                  '@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png'
+                )
+              "
             />
             <p>图：初期概念图 1</p>
           </div>
@@ -89,6 +95,11 @@
             <img
               src="@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg"
               alt="Thoughts Art Initial 1"
+              @click="
+                openPreview(
+                  '@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg'
+                )
+              "
             />
             <p>图：初期概念图 2</p>
           </div>
@@ -110,6 +121,7 @@
             <img
               src="@/assets/special/封面艺术全过程/2.人设三视图.png"
               alt="Thoughts Art Character Design"
+              @click="openPreview('@/assets/special/封面艺术全过程/2.人设三视图.png')"
             />
             <p>图：人设三视图</p>
           </div>
@@ -131,6 +143,11 @@
             <img
               src="@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg"
               alt="Thoughts Art Composition 1"
+              @click="
+                openPreview(
+                  '@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg'
+                )
+              "
             />
             <p>图：构图探索 1</p>
           </div>
@@ -138,6 +155,11 @@
             <img
               src="@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg"
               alt="Thoughts Art Composition 2"
+              @click="
+                openPreview(
+                  '@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg'
+                )
+              "
             />
             <p>图：构图探索 2</p>
           </div>
@@ -145,6 +167,11 @@
             <img
               src="@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg"
               alt="Thoughts Art Composition 3"
+              @click="
+                openPreview(
+                  '@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg'
+                )
+              "
             />
             <p>图：构图探索 3</p>
           </div>
@@ -166,6 +193,7 @@
             <img
               src="@/assets/special/封面艺术全过程/4.完成过程/1.png"
               alt="Thoughts Art Final 1"
+              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/1.png')"
             />
             <p>图：完成过程 1</p>
           </div>
@@ -173,6 +201,7 @@
             <img
               src="@/assets/special/封面艺术全过程/4.完成过程/2.png"
               alt="Thoughts Art Final 2"
+              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/2.png')"
             />
             <p>图：完成过程 2</p>
           </div>
@@ -180,6 +209,7 @@
             <img
               src="@/assets/special/封面艺术全过程/4.完成过程/3.png"
               alt="Thoughts Art Final 3"
+              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/3.png')"
             />
             <p>图：完成过程 3</p>
           </div>
@@ -187,6 +217,7 @@
             <img
               src="@/assets/special/封面艺术全过程/4.完成过程/4.png"
               alt="Thoughts Art Final 4"
+              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/4.png')"
             />
             <p>图：完成过程 4</p>
           </div>
@@ -208,6 +239,7 @@
             <img
               src="@/assets/special/thoughts_cover.jpg"
               alt="Thoughts Art Cover Design"
+              @click="openPreview('@/assets/special/thoughts_cover.jpg')"
             />
             <p>图：封面设计</p>
           </div>
@@ -215,6 +247,7 @@
             <img
               src="@/assets/special/thoughts_background.png"
               alt="Thoughts Art Cover Background"
+              @click="openPreview('@/assets/special/thoughts_background.png')"
             />
             <p>图：封面背景</p>
           </div>
@@ -267,6 +300,11 @@
               <img
                 src="@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg"
                 alt="Thoughts Art Composition 1"
+                @click="
+                  openPreview(
+                    '@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg'
+                  )
+                "
               />
             </div>
 
@@ -274,6 +312,11 @@
               <img
                 src="@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg"
                 alt="Thoughts Art Composition 2"
+                @click="
+                  openPreview(
+                    '@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg'
+                  )
+                "
               />
             </div>
 
@@ -281,6 +324,11 @@
               <img
                 src="@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg"
                 alt="Thoughts Art Composition 3"
+                @click="
+                  openPreview(
+                    '@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg'
+                  )
+                "
               />
             </div>
           </div>
@@ -346,17 +394,100 @@
         </div>
       </section>
     </div>
+    <ImagePreview
+      :is-open="previewOpen"
+      :image-src="previewImage"
+      :alt="previewAlt"
+      @close="closePreview"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import SimpleCarousel from "@/components/SimpleCarousel.vue";
+import ImagePreview from "@/components/ImagePreview.vue";
+
+// Import all images
+import thoughtsCoverHigh from "@/assets/special/thoughts_cover_high.jpg";
+import thoughtsCover from "@/assets/special/thoughts_cover.jpg";
+import thoughtsBackground from "@/assets/special/thoughts_background.png";
+import thoughtsBackgroundHigh from "@/assets/special/thoughts_background_high.png";
+
+// Import design process images
+import designInitial1 from "@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png";
+import designInitial1High from "@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778_high.png";
+import designInitial2 from "@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg";
+import designInitial2High from "@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29_high.jpg";
+import designCharacter from "@/assets/special/封面艺术全过程/2.人设三视图.png";
+import designCharacterHigh from "@/assets/special/封面艺术全过程/2.人设三视图_high.png";
+import designComposition1 from "@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg";
+import designComposition1High from "@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826_high.jpg";
+import designComposition2 from "@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg";
+import designComposition2High from "@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1_high.jpg";
+import designComposition3 from "@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg";
+import designComposition3High from "@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6_high.jpg";
+import designFinal1 from "@/assets/special/封面艺术全过程/4.完成过程/1.png";
+import designFinal1High from "@/assets/special/封面艺术全过程/4.完成过程/1_high.png";
+import designFinal2 from "@/assets/special/封面艺术全过程/4.完成过程/2.png";
+import designFinal2High from "@/assets/special/封面艺术全过程/4.完成过程/2_high.png";
+import designFinal3 from "@/assets/special/封面艺术全过程/4.完成过程/3.png";
+import designFinal3High from "@/assets/special/封面艺术全过程/4.完成过程/3_high.png";
+import designFinal4 from "@/assets/special/封面艺术全过程/4.完成过程/4.png";
+import designFinal4High from "@/assets/special/封面艺术全过程/4.完成过程/4_high.png";
 
 export default defineComponent({
   name: "SpecialViewThoughts",
-  components: { SimpleCarousel },
+  components: { SimpleCarousel, ImagePreview },
   setup() {
+    const previewOpen = ref(false);
+    const previewImage = ref("");
+    const previewAlt = ref("");
+
+    // Create a map of image paths to imported images
+    const imageMap = {
+      "@/assets/special/thoughts_cover.jpg": thoughtsCover,
+      "@/assets/special/thoughts_cover_high.jpg": thoughtsCoverHigh,
+      "@/assets/special/thoughts_background.png": thoughtsBackground,
+      "@/assets/special/thoughts_background_high.png": thoughtsBackgroundHigh,
+      "@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png": designInitial1,
+      "@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778_high.png": designInitial1High,
+      "@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg": designInitial2,
+      "@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29_high.jpg": designInitial2High,
+      "@/assets/special/封面艺术全过程/2.人设三视图.png": designCharacter,
+      "@/assets/special/封面艺术全过程/2.人设三视图_high.png": designCharacterHigh,
+      "@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg": designComposition1,
+      "@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826_high.jpg": designComposition1High,
+      "@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg": designComposition2,
+      "@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1_high.jpg": designComposition2High,
+      "@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg": designComposition3,
+      "@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6_high.jpg": designComposition3High,
+      "@/assets/special/封面艺术全过程/4.完成过程/1.png": designFinal1,
+      "@/assets/special/封面艺术全过程/4.完成过程/1_high.png": designFinal1High,
+      "@/assets/special/封面艺术全过程/4.完成过程/2.png": designFinal2,
+      "@/assets/special/封面艺术全过程/4.完成过程/2_high.png": designFinal2High,
+      "@/assets/special/封面艺术全过程/4.完成过程/3.png": designFinal3,
+      "@/assets/special/封面艺术全过程/4.完成过程/3_high.png": designFinal3High,
+      "@/assets/special/封面艺术全过程/4.完成过程/4.png": designFinal4,
+      "@/assets/special/封面艺术全过程/4.完成过程/4_high.png": designFinal4High,
+    };
+
+    const openPreview = (imagePath: string) => {
+      const highResPath = imagePath.includes("_high")
+        ? imagePath
+        : imagePath.replace(".jpg", "_high.jpg").replace(".png", "_high.png");
+      console.log(highResPath, imagePath);
+      previewImage.value = imageMap[highResPath];
+      previewAlt.value = "Image preview";
+      previewOpen.value = true;
+    };
+
+    const closePreview = () => {
+      previewOpen.value = false;
+      previewImage.value = "";
+      previewAlt.value = "";
+    };
+
     const musicCards = [
       {
         title: "VeetaCrush",
@@ -481,7 +612,15 @@ export default defineComponent({
       //   ]
       // }
     ];
-    return { musicCards, artCards };
+    return {
+      musicCards,
+      artCards,
+      previewOpen,
+      previewImage,
+      previewAlt,
+      openPreview,
+      closePreview,
+    };
   },
 });
 </script>
@@ -737,6 +876,7 @@ export default defineComponent({
   width: 100%;
   max-width: 300px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .design-image-item img:hover {
