@@ -117,12 +117,24 @@
         </div>
       </section>
 
+  
       <section class="main-section scrollable">
+
+        <div style="height: 3rem"></div>
+
         <div class="sub-title">音乐制作幕后</div>
-        <SimpleCarousel :items="musicCards" :autoRotateInterval="30000" />
+
+        <FadeInOnScroll>
+          <SimpleCarousel :items="musicCards" :autoRotateInterval="30000" />
+        </FadeInOnScroll>
+
+        <div style="height: 5rem"></div>
       </section>
 
+
+
       <section class="main-section scrollable">
+        <div style="height: 3rem"></div>
         <div class="sub-title">艺术设计幕后</div>
 
         <div class="section-spacing"></div>
@@ -347,7 +359,10 @@
           </div>
         </div>
 
-        <SimpleCarousel :items="artCards" :autoRotateInterval="30000" />
+        <FadeInOnScroll>
+          <SimpleCarousel :items="artCards" :autoRotateInterval="30000" />
+        </FadeInOnScroll>
+        <div style="height: 5rem"></div>
       </section>
 
       <section class="main-section">
@@ -368,7 +383,7 @@
           <span
             style="
               font-size: 0.8rem;
-              color: #666666;
+              color: #808080;
               font-style: italic;
               font-family: 'Poppins', sans-serif;
               text-align: center;
@@ -460,6 +475,12 @@
         <FadeInOnScroll>
           <div class="sub-title">Credits</div>
           <div class="credits">
+            <div class="credit-group">
+              <h3>Album Release Date</h3>
+              <div class="credit-list">
+                <span>2025.04.27</span>
+              </div>
+            </div>
             <div class="credit-group">
               <h3>Artist</h3>
               <div class="credit-list">
@@ -810,6 +831,17 @@ export default defineComponent({
   font-size: 0.9rem;
 }
 
+/* Add selection styles */
+.thoughts-view ::selection {
+  background: #000000;
+  color: #ffffff;
+}
+
+.thoughts-view ::-moz-selection {
+  background: #000000;
+  color: #ffffff;
+}
+
 .cover-tracklist-container {
   display: flex;
   flex-direction: row;
@@ -875,7 +907,7 @@ export default defineComponent({
 }
 
 .track-artist {
-  color: #666666;
+  color: #808080;
   font-size: 13px;
   margin-right: 8px;
   opacity: 0.8;
@@ -952,7 +984,7 @@ export default defineComponent({
   font-weight: 400;
   line-height: 1.6;
   text-align: center;
-  color: #666666;
+  color: #808080;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -980,7 +1012,7 @@ export default defineComponent({
 .story-item p {
   font-size: 0.9rem;
   line-height: 2rem;
-  color: #666666;
+  color: #808080;
   text-align: left;
   margin: 1.2rem 0;
   font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -1021,7 +1053,7 @@ export default defineComponent({
 
 .credit-list span {
   font-size: 0.85rem;
-  color: #666666;
+  color: #808080;
 }
 
 .design-images {
@@ -1063,7 +1095,7 @@ export default defineComponent({
   line-height: 1.6rem;
   margin-top: 1rem;
   text-align: center;
-  color: #666666;
+  color: #808080;
 }
 
 .design-image-item.wide {
