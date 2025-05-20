@@ -7,58 +7,118 @@
     <div class="main-sections">
       <section class="main-section">
         <div class="sub-title">thoughts 诞生幕后</div>
-        <!-- <div class="cover-section"> -->
-        <img
-          class="cover"
-          src="@/assets/special/thoughts_cover.jpg"
-          alt="Thoughts Cover"
-          @click="openPreview('@/assets/special/thoughts_cover_high.jpg')"
-        />
-        <!-- </div> -->
+        <div class="cover-tracklist-container">
+          <div class="cover-section">
+            <img
+              class="cover"
+              src="@/assets/special/thoughts_cover.jpg"
+              alt="Thoughts Cover"
+              @click="openPreview('@/assets/special/thoughts_cover_high.jpg')"
+            />
+          </div>
+          <div class="tracklist">
+            <ul>
+              <li>
+                <span class="track-number">01</span>
+                <span class="track-title">palette ii</span>
+                <span class="track-artist">VeetaCrush</span>
+              </li>
+              <li>
+                <span class="track-number">02</span>
+                <span class="track-title">Awake</span>
+                <span class="track-artist">Joulez</span>
+              </li>
+              <li>
+                <span class="track-number">03</span>
+                <span class="track-title">幽けきルミノールライト</span>
+                <span class="track-artist">潮音きつね</span>
+              </li>
+              <li>
+                <span class="track-number">04</span>
+                <span class="track-title">Lucidandelion</span>
+                <span class="track-artist">望月真白</span>
+              </li>
+              <li>
+                <span class="track-number">05</span>
+                <span class="track-title">Titania</span>
+                <span class="track-artist">Aki Sz</span>
+              </li>
+              <li>
+                <span class="track-number">06</span>
+                <span class="track-title">December</span>
+                <span class="track-artist">かたぎり</span>
+              </li>
+              <li>
+                <span class="track-number">07</span>
+                <span class="track-title">6 p.m.</span>
+                <span class="track-artist">wheatfox</span>
+              </li>
+              <li>
+                <span class="track-number">08</span>
+                <span class="track-title">Voix sacrée</span>
+                <span class="track-artist">Nirotiy</span>
+              </li>
+              <li>
+                <span class="track-number">09</span>
+                <span class="track-title">曇天</span>
+                <span class="track-artist">桃罐</span>
+              </li>
+              <li>
+                <span class="track-number">10</span>
+                <span class="track-title">Epilogue</span>
+                <span class="track-artist">Rayven</span>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="section-spacing"></div>
         <div class="content">
-          <div class="story-item">
-            <h3>制作历程</h3>
-            <p>
-              <b>thoughts</b> 这个系列的想法大约在两年前开始浮现。
-              我们一直是比较胡来的创作思路，五年间，几乎是想到哪里就做到哪里。
-              但随着时间的推移，渐渐地也想分享给你属于我们自己的声音。
-            </p>
+          <FadeInOnScroll>
+            <div style="margin-top: 6rem"></div>
+            <div class="story-item">
+              <h3 style="text-align: center">制作历程</h3>
+              <div style="height: 1rem"></div>
+              <p>
+                <b>thoughts</b> 这个系列的想法大约在两年前开始浮现。
+                我们一直是比较胡来的创作思路，五年间，几乎是想到哪里就做到哪里。
+                但随着时间的推移，渐渐地也想分享给你属于我们自己的声音。
+              </p>
 
-            <p>
-              <b>thoughts</b> 的创作逻辑是一种逆向思维。
-              先征集成员们想实现怎样的声音方向，汇总后经过讨论和细微的调整，得出专辑的主题和方向。
-              这样的好处在于可以不用被主题所限制，可以最大程度的发挥所思所想，专辑也不会过于发散。
-              可以说是真正的展现出我们的 "thoughts"。
-            </p>
+              <p>
+                <b>thoughts</b> 的创作逻辑是一种逆向思维。
+                先征集成员们想实现怎样的声音方向，汇总后经过讨论和细微的调整，得出专辑的主题和方向。
+                这样的好处在于可以不用被主题所限制，可以最大程度的发挥所思所想，专辑也不会过于发散。
+                可以说是真正的展现出我们的 "thoughts"。
+              </p>
 
-            <p>
-              当然，作为首张专辑，还是不可避免地出现了一些过于命题作文的情况，在未来会逐渐调整。
-            </p>
+              <p>
+                当然，作为首张专辑，还是不可避免地出现了一些过于命题作文的情况，在未来会逐渐调整。
+              </p>
 
-            <p>
-              总之，<b>thoughts</b> 今后将作为 Thoughost
-              "直接"传达给你们我们所构想声音的系列，也就是所谓的
-              <i>Thoughost Compilation Series</i> 。 当然，这不意味着 Thoughost
-              的胡来结束了，我们正准备更尽情的发疯。
-            </p>
+              <p>
+                总之，<b>thoughts</b> 今后将作为 Thoughost
+                "直接"传达给你们我们所构想声音的系列，也就是所谓的
+                <i>Thoughost Compilation Series</i> 。 当然，这不意味着 Thoughost
+                的胡来结束了，我们正准备更尽情的发疯。
+              </p>
 
-            <p>
-              第一张顺理成章地将主题定为了 "rebirth"。 既象征这是 Thoughost
-              的下一步，也说明了本次整体的声音方向。
-              听起来有些忧伤，仿佛被灰色笼罩的世界，在这之中抓住了一丝光亮。
-              虽然是很不具象的画面，但大家都从不同的角度诠释了这一主题。
-            </p>
+              <p>
+                第一张顺理成章地将主题定为了 "rebirth"。 既象征这是 Thoughost
+                的下一步，也说明了本次整体的声音方向。
+                听起来有些忧伤，仿佛被灰色笼罩的世界，在这之中抓住了一丝光亮。
+                虽然是很不具象的画面，但大家都从不同的角度诠释了这一主题。
+              </p>
 
-            <p>更详细的创作幕后，请见下方各位的自我说明。</p>
-            <p>感谢你们的支持。</p>
-          </div>
+              <p>更详细的创作幕后，请见下方各位的自我说明。</p>
+              <p>感谢你们的支持。</p>
+            </div>
+            <div style="margin-bottom: 6rem"></div>
+          </FadeInOnScroll>
         </div>
       </section>
 
       <section class="main-section scrollable">
         <div class="sub-title">音乐制作幕后</div>
-        <!-- <div class="section-spacing"></div> -->
         <SimpleCarousel :items="musicCards" :autoRotateInterval="30000" />
       </section>
 
@@ -67,236 +127,92 @@
 
         <div class="section-spacing"></div>
 
-        <div
-          style="
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 2.2rem;
-            margin-bottom: 2rem;
-          "
-        >
-          初期概念图
-        </div>
+        <FadeInOnScroll>
+          <div
+            style="
+              font-size: 1.2rem;
+              font-weight: 500;
+              line-height: 2.2rem;
+              margin-bottom: 2rem;
+            "
+          >
+            初期概念图
+          </div>
+        </FadeInOnScroll>
 
         <div class="design-images">
           <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png"
-              alt="Thoughts Art Initial 1"
-              @click="
-                openPreview(
-                  '@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png'
-                )
-              "
-            />
-            <p>图：初期概念图 1</p>
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png"
+                alt="Thoughts Art Initial 1"
+                @click="
+                  openPreview(
+                    '@/assets/special/封面艺术全过程/1.初期概念图/8EE8656FFD2263354F90D963C53CD778.png'
+                  )
+                "
+              />
+              <p>图：初期概念图 1</p>
+            </FadeInOnScroll>
           </div>
           <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg"
-              alt="Thoughts Art Initial 1"
-              @click="
-                openPreview(
-                  '@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg'
-                )
-              "
-            />
-            <p>图：初期概念图 2</p>
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg"
+                alt="Thoughts Art Initial 1"
+                @click="
+                  openPreview(
+                    '@/assets/special/封面艺术全过程/1.初期概念图/01897AF2C4D4A4C8BAA5128DBADECB29.jpg'
+                  )
+                "
+              />
+              <p>图：初期概念图 2</p>
+            </FadeInOnScroll>
           </div>
         </div>
 
-        <div
-          style="
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 2.2rem;
-            margin: 4rem 0 2rem 0;
-          "
-        >
-          人设三视图
-        </div>
+        <FadeInOnScroll>
+          <div
+            style="
+              font-size: 1.2rem;
+              font-weight: 500;
+              line-height: 2.2rem;
+              margin: 4rem 0 2rem 0;
+            "
+          >
+            人设三视图
+          </div>
+        </FadeInOnScroll>
 
         <div class="design-images">
           <div class="design-image-item wide">
-            <img
-              src="@/assets/special/封面艺术全过程/2.人设三视图.png"
-              alt="Thoughts Art Character Design"
-              @click="openPreview('@/assets/special/封面艺术全过程/2.人设三视图.png')"
-            />
-            <p>图：人设三视图</p>
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/2.人设三视图.png"
+                alt="Thoughts Art Character Design"
+                @click="openPreview('@/assets/special/封面艺术全过程/2.人设三视图.png')"
+              />
+              <p>图：人设三视图</p>
+            </FadeInOnScroll>
           </div>
         </div>
 
-        <div
-          style="
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 2.2rem;
-            margin: 4rem 0 2rem 0;
-          "
-        >
-          构图探索
-        </div>
+        <FadeInOnScroll>
+          <div
+            style="
+              font-size: 1.2rem;
+              font-weight: 500;
+              line-height: 2.2rem;
+              margin: 4rem 0 2rem 0;
+            "
+          >
+            构图探索
+          </div>
+        </FadeInOnScroll>
 
         <div class="design-images">
           <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg"
-              alt="Thoughts Art Composition 1"
-              @click="
-                openPreview(
-                  '@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg'
-                )
-              "
-            />
-            <p>图：构图探索 1</p>
-          </div>
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg"
-              alt="Thoughts Art Composition 2"
-              @click="
-                openPreview(
-                  '@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg'
-                )
-              "
-            />
-            <p>图：构图探索 2</p>
-          </div>
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg"
-              alt="Thoughts Art Composition 3"
-              @click="
-                openPreview(
-                  '@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg'
-                )
-              "
-            />
-            <p>图：构图探索 3</p>
-          </div>
-        </div>
-
-        <div
-          style="
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 2.2rem;
-            margin: 4rem 0 2rem 0;
-          "
-        >
-          完成过程
-        </div>
-
-        <div class="design-images">
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/4.完成过程/1.png"
-              alt="Thoughts Art Final 1"
-              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/1.png')"
-            />
-            <p>图：完成过程 1</p>
-          </div>
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/4.完成过程/2.png"
-              alt="Thoughts Art Final 2"
-              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/2.png')"
-            />
-            <p>图：完成过程 2</p>
-          </div>
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/4.完成过程/3.png"
-              alt="Thoughts Art Final 3"
-              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/3.png')"
-            />
-            <p>图：完成过程 3</p>
-          </div>
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/封面艺术全过程/4.完成过程/4.png"
-              alt="Thoughts Art Final 4"
-              @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/4.png')"
-            />
-            <p>图：完成过程 4</p>
-          </div>
-        </div>
-
-        <div
-          style="
-            font-size: 1.2rem;
-            font-weight: 500;
-            line-height: 2.2rem;
-            margin: 4rem 0 2rem 0;
-          "
-        >
-          封面设计
-        </div>
-
-        <div class="design-images">
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/thoughts_cover.jpg"
-              alt="Thoughts Art Cover Design"
-              @click="openPreview('@/assets/special/thoughts_cover.jpg')"
-            />
-            <p>图：封面设计</p>
-          </div>
-          <div class="design-image-item">
-            <img
-              src="@/assets/special/thoughts_background.png"
-              alt="Thoughts Art Cover Background"
-              @click="openPreview('@/assets/special/thoughts_background.png')"
-            />
-            <p>图：封面背景</p>
-          </div>
-        </div>
-
-        <SimpleCarousel :items="artCards" :autoRotateInterval="30000" />
-      </section>
-
-      <section class="main-section">
-        <!-- <div class="sub-title">Konseki Takane</div> -->
-        <div style="margin-top: 3rem"></div>
-        <span
-          style="
-            font-size: 1.7rem;
-            font-weight: 1000;
-            line-height: 2.2rem;
-            font-family: 'Poppins', sans-serif;
-          "
-          >Konseki Takane</span
-        >
-        <br />
-        <span
-          style="
-            font-size: 0.8rem;
-            color: #666666;
-            font-style: italic;
-            font-family: 'Poppins', sans-serif;
-          "
-          >Art Direction & Design</span
-        >
-        <!-- margin -->
-        <div style="margin-bottom: 3rem"></div>
-        <div class="story-item">
-          <p>
-            从一开始，我就想找一位"系列画家"。同这个系列共同成长，直观地感受到我们的成长。为此物色了很多人，最终决定让
-            TARA#376 担任系列画家。
-          </p>
-          <p>
-            TARA#376 曾以 illness_liquor 的名义为我们提供过音乐，也为我们绘制过
-            fanart。虽然谈不上是那种第一眼就留下深刻印象的风格，但胜在复古、经典，是耐看的类型，符合我对这个系列的整体印象。从另一方面来说潜力很大，是可以一起并肩进步的伙伴，为此敲定了人选。
-          </p>
-          <p>
-            这也是她第一次做系列角色的角色设计，为此较劲了脑汁，在深夜和我讨论角色呈现的方向时压力太大而落泪，对此我真的很愧疚和抱歉，也很感谢。最后呈现的角色是一位不花哨、不显眼、不突出，只是安静呆在那里，有点神秘，又有点神圣，谜团很多，像一张白纸一样的角色，甚至没有名字，我觉得很符合这个系列整体的氛围。
-          </p>
-          <p>我只提出了最初期的猜想，剩下的全是 TARA#376 一个人的构想，实在是了不起。</p>
-          <p>下面有几个不同的构图方向。</p>
-
-          <div class="small-design-images">
-            <div class="small-design-image-item">
+            <FadeInOnScroll>
               <img
                 src="@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg"
                 alt="Thoughts Art Composition 1"
@@ -306,9 +222,11 @@
                   )
                 "
               />
-            </div>
-
-            <div class="small-design-image-item">
+              <p>图：构图探索 1</p>
+            </FadeInOnScroll>
+          </div>
+          <div class="design-image-item">
+            <FadeInOnScroll>
               <img
                 src="@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg"
                 alt="Thoughts Art Composition 2"
@@ -318,9 +236,11 @@
                   )
                 "
               />
-            </div>
-
-            <div class="small-design-image-item">
+              <p>图：构图探索 2</p>
+            </FadeInOnScroll>
+          </div>
+          <div class="design-image-item">
+            <FadeInOnScroll>
               <img
                 src="@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg"
                 alt="Thoughts Art Composition 3"
@@ -330,68 +250,257 @@
                   )
                 "
               />
-            </div>
+              <p>图：构图探索 3</p>
+            </FadeInOnScroll>
           </div>
-
-          <p>我选择了其中的一个版本，在一点一点的沟通和交流中推进了下去。</p>
-          <p>
-            我特意没有往复杂的方向做后期设计部分的工作，相反，从一开始我的脑子里只有"怎样让
-            TARA#376
-            的作品更出挑"，"让整体的氛围更融洽"。以干净，简洁的印象推进，最后的效果看起来像是什么都没有加。
-          </p>
-          <p>
-            我希望封面看起来就像碟片里收录的音乐一样，不浮躁，不惹人眼球，只是安静地躺在那里，等待你们的静静聆听，能作为一副一直看下去的作品。
-          </p>
-          <p>
-            这么想的话，似乎在现在的浪潮中，显得有些不够惹人眼球，连我自己都觉得应该很难注意到它。
-          </p>
-          <p>最后的结果，个人来说我很满意，也希望你们会喜欢。</p>
         </div>
+
+        <FadeInOnScroll>
+          <div
+            style="
+              font-size: 1.2rem;
+              font-weight: 500;
+              line-height: 2.2rem;
+              margin: 4rem 0 2rem 0;
+            "
+          >
+            完成过程
+          </div>
+        </FadeInOnScroll>
+
+        <div class="design-images">
+          <div class="design-image-item small">
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/4.完成过程/1.png"
+                alt="Thoughts Art Final 1"
+                @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/1.png')"
+              />
+              <p>图：完成过程 1</p>
+            </FadeInOnScroll>
+          </div>
+          <div class="design-image-item small">
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/4.完成过程/2.png"
+                alt="Thoughts Art Final 2"
+                @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/2.png')"
+              />
+              <p>图：完成过程 2</p>
+            </FadeInOnScroll>
+          </div>
+          <div class="design-image-item small">
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/4.完成过程/3.png"
+                alt="Thoughts Art Final 3"
+                @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/3.png')"
+              />
+              <p>图：完成过程 3</p>
+            </FadeInOnScroll>
+          </div>
+          <div class="design-image-item small">
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/封面艺术全过程/4.完成过程/4.png"
+                alt="Thoughts Art Final 4"
+                @click="openPreview('@/assets/special/封面艺术全过程/4.完成过程/4.png')"
+              />
+              <p>图：完成过程 4</p>
+            </FadeInOnScroll>
+          </div>
+        </div>
+
+        <FadeInOnScroll>
+          <div
+            style="
+              font-size: 1.2rem;
+              font-weight: 500;
+              line-height: 2.2rem;
+              margin: 4rem 0 2rem 0;
+            "
+          >
+            封面设计
+          </div>
+        </FadeInOnScroll>
+
+        <div class="design-images">
+          <div class="design-image-item">
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/thoughts_cover.jpg"
+                alt="Thoughts Art Cover Design"
+                @click="openPreview('@/assets/special/thoughts_cover.jpg')"
+              />
+              <p>图：封面设计</p>
+            </FadeInOnScroll>
+          </div>
+          <div class="design-image-item">
+            <FadeInOnScroll>
+              <img
+                src="@/assets/special/thoughts_background.png"
+                alt="Thoughts Art Cover Background"
+                @click="openPreview('@/assets/special/thoughts_background.png')"
+              />
+              <p>图：封面背景</p>
+            </FadeInOnScroll>
+          </div>
+        </div>
+
+        <SimpleCarousel :items="artCards" :autoRotateInterval="30000" />
       </section>
 
       <section class="main-section">
-        <div class="sub-title">Credits</div>
-        <div class="credits">
-          <div class="credit-group">
-            <h3>Artist</h3>
-            <div class="credit-list">
-              <span>VeetaCrush</span>
-              <span>Joulez</span>
-              <span>潮音きつね</span>
-              <span>望月真白</span>
-              <span>Aki Sz</span>
-              <span>かたぎり</span>
-              <span>wheatfox</span>
-              <span>Nirotiy</span>
-              <span>桃罐</span>
-              <span>Rayven</span>
+        <div style="margin-top: 3rem"></div>
+        <FadeInOnScroll>
+          <span
+            style="
+              font-size: 1.7rem;
+              font-weight: 1000;
+              line-height: 2.2rem;
+              font-family: 'Poppins', sans-serif;
+              color: #333333;
+              text-align: center;
+              display: block;
+            "
+            >Konseki Takane</span
+          >
+          <span
+            style="
+              font-size: 0.8rem;
+              color: #666666;
+              font-style: italic;
+              font-family: 'Poppins', sans-serif;
+              text-align: center;
+              display: block;
+              margin-top: 0.7rem;
+            "
+            >Art Direction & Design</span
+          >
+        </FadeInOnScroll>
+        <div style="margin-bottom: 3rem"></div>
+        <FadeInOnScroll>
+          <div class="story-item">
+            <div style="height: 4rem"></div>
+            <p>
+              从一开始，我就想找一位"系列画家"。同这个系列共同成长，直观地感受到我们的成长。为此物色了很多人，最终决定让
+              TARA#376 担任系列画家。
+            </p>
+            <p>
+              TARA#376 曾以 illness_liquor 的名义为我们提供过音乐，也为我们绘制过
+              fanart。虽然谈不上是那种第一眼就留下深刻印象的风格，但胜在复古、经典，是耐看的类型，符合我对这个系列的整体印象。从另一方面来说潜力很大，是可以一起并肩进步的伙伴，为此敲定了人选。
+            </p>
+            <p>
+              这也是她第一次做系列角色的角色设计，为此较劲了脑汁，在深夜和我讨论角色呈现的方向时压力太大而落泪，对此我真的很愧疚和抱歉，也很感谢。最后呈现的角色是一位不花哨、不显眼、不突出，只是安静呆在那里，有点神秘，又有点神圣，谜团很多，像一张白纸一样的角色，甚至没有名字，我觉得很符合这个系列整体的氛围。
+            </p>
+            <p>我只提出了最初期的猜想，剩下的全是 TARA#376 一个人的构想，实在是了不起。</p>
+            <p>下面有几个不同的构图方向。</p>
+
+            <div style="height: 2rem"></div>
+
+            <div class="small-design-images">
+              <div class="small-design-image-item">
+                <img
+                  src="@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg"
+                  alt="Thoughts Art Composition 1"
+                  @click="
+                    openPreview(
+                      '@/assets/special/封面艺术全过程/3.构图探索/4BB5645680F82733BAC4AE0798D13826.jpg'
+                    )
+                  "
+                />
+              </div>
+
+              <div class="small-design-image-item">
+                <img
+                  src="@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg"
+                  alt="Thoughts Art Composition 2"
+                  @click="
+                    openPreview(
+                      '@/assets/special/封面艺术全过程/3.构图探索/055CBD158985E875845001C1222AD5A1.jpg'
+                    )
+                  "
+                />
+              </div>
+
+              <div class="small-design-image-item">
+                <img
+                  src="@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg"
+                  alt="Thoughts Art Composition 3"
+                  @click="
+                    openPreview(
+                      '@/assets/special/封面艺术全过程/3.构图探索/0DC666F49BE6BBF547931E9155588CE6.jpg'
+                    )
+                  "
+                />
+              </div>
+            </div>
+
+            <div style="height: 3rem"></div>
+
+            <p>我选择了其中的一个版本，在一点一点的沟通和交流中推进了下去。</p>
+            <p>
+              我特意没有往复杂的方向做后期设计部分的工作，相反，从一开始我的脑子里只有"怎样让
+              TARA#376
+              的作品更出挑"，"让整体的氛围更融洽"。以干净，简洁的印象推进，最后的效果看起来像是什么都没有加。
+            </p>
+            <p>
+              我希望封面看起来就像碟片里收录的音乐一样，不浮躁，不惹人眼球，只是安静地躺在那里，等待你们的静静聆听，能作为一副一直看下去的作品。
+            </p>
+            <p>
+              这么想的话，似乎在现在的浪潮中，显得有些不够惹人眼球，连我自己都觉得应该很难注意到它。
+            </p>
+            <p>最后的结果，个人来说我很满意，也希望你们会喜欢。</p>
+            <div style="height: 2rem"></div>
+          </div>
+        </FadeInOnScroll>
+      </section>
+
+      <section class="main-section">
+        <FadeInOnScroll>
+          <div class="sub-title">Credits</div>
+          <div class="credits">
+            <div class="credit-group">
+              <h3>Artist</h3>
+              <div class="credit-list">
+                <span>VeetaCrush</span>
+                <span>Joulez</span>
+                <span>潮音きつね</span>
+                <span>望月真白</span>
+                <span>Aki Sz</span>
+                <span>かたぎり</span>
+                <span>wheatfox</span>
+                <span>Nirotiy</span>
+                <span>桃罐</span>
+                <span>Rayven</span>
+              </div>
+            </div>
+            <div class="credit-group">
+              <h3>Mastering</h3>
+              <div class="credit-list">
+                <span>Valtrax</span>
+              </div>
+            </div>
+            <div class="credit-group">
+              <h3>Illustration</h3>
+              <div class="credit-list">
+                <span>TARA#376</span>
+              </div>
+            </div>
+            <div class="credit-group">
+              <h3>Art Direction & Design</h3>
+              <div class="credit-list">
+                <span>Konseki Takane</span>
+              </div>
+            </div>
+            <div class="credit-group">
+              <h3>Special Page Web Design</h3>
+              <div class="credit-list">
+                <span>wheatfox</span>
+              </div>
             </div>
           </div>
-          <div class="credit-group">
-            <h3>Mastering</h3>
-            <div class="credit-list">
-              <span>Valtrax</span>
-            </div>
-          </div>
-          <div class="credit-group">
-            <h3>Illustration</h3>
-            <div class="credit-list">
-              <span>TARA#376</span>
-            </div>
-          </div>
-          <div class="credit-group">
-            <h3>Art Direction & Design</h3>
-            <div class="credit-list">
-              <span>Konseki Takane</span>
-            </div>
-          </div>
-          <div class="credit-group">
-            <h3>Special Page Web Design</h3>
-            <div class="credit-list">
-              <span>wheatfox</span>
-            </div>
-          </div>
-        </div>
+        </FadeInOnScroll>
       </section>
     </div>
     <ImagePreview
@@ -407,6 +516,7 @@
 import { defineComponent, ref } from "vue";
 import SimpleCarousel from "@/components/SimpleCarousel.vue";
 import ImagePreview from "@/components/ImagePreview.vue";
+import FadeInOnScroll from "@/components/FadeInOnScroll.vue";
 
 // Import all images
 import thoughtsCoverHigh from "@/assets/special/thoughts_cover_high.jpg";
@@ -438,7 +548,7 @@ import designFinal4High from "@/assets/special/封面艺术全过程/4.完成过
 
 export default defineComponent({
   name: "SpecialViewThoughts",
-  components: { SimpleCarousel, ImagePreview },
+  components: { SimpleCarousel, ImagePreview, FadeInOnScroll },
   setup() {
     const previewOpen = ref(false);
     const previewImage = ref("");
@@ -658,7 +768,7 @@ export default defineComponent({
   margin-top: 2rem;
   margin-bottom: 2rem;
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-  padding: 4rem;
+  padding: 6rem 4rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
@@ -685,6 +795,7 @@ export default defineComponent({
   font-size: 2.2rem;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
+  letter-spacing: 0.05em;
 }
 
 .thoughts-view {
@@ -699,19 +810,75 @@ export default defineComponent({
   font-size: 0.9rem;
 }
 
+.cover-tracklist-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0;
+}
+
 .cover-section {
-  margin-bottom: 0;
-  text-align: center;
-  padding: 4rem;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  position: relative;
+  flex: 0 0 auto;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 380px;
 }
 
 .cover {
-  max-width: 400px;
+  max-width: 380px;
   width: 100%;
   transition: transform 0.3s ease;
+}
+
+.tracklist {
+  flex: 1;
+  margin-left: auto;
+  text-align: left;
+}
+
+.tracklist ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tracklist li {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tracklist li:last-child {
+  border-bottom: none;
+}
+
+.track-number {
+  width: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.track-title {
+  flex: 1;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.track-artist {
+  color: #666666;
+  font-size: 13px;
+  margin-right: 8px;
+  opacity: 0.8;
 }
 
 .cover:hover {
@@ -729,7 +896,7 @@ export default defineComponent({
 .main-section {
   background: #ffffff;
   border-radius: 0;
-  padding: 3rem;
+  padding: 4rem;
   width: 100%;
   max-width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -751,7 +918,7 @@ export default defineComponent({
 }
 
 .sub-title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 1000;
   line-height: 2rem;
   margin-bottom: 2rem;
@@ -766,6 +933,7 @@ export default defineComponent({
   margin-left: 0;
   margin-right: 0;
   font-family: "Poppins", sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .main-section.scrollable .sub-title {
@@ -780,7 +948,7 @@ export default defineComponent({
 }
 
 .content {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   text-align: center;
@@ -790,7 +958,7 @@ export default defineComponent({
 }
 
 .story-item {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: left;
   max-width: 1000px;
   margin-left: auto;
@@ -800,20 +968,21 @@ export default defineComponent({
 }
 
 .story-item h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   margin-bottom: 1rem;
   color: #333333;
   text-align: left;
   font-family: "Poppins", sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .story-item p {
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 2rem;
   color: #666666;
   text-align: left;
-  margin: 0.5rem 0;
+  margin: 1.2rem 0;
   font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
@@ -826,8 +995,7 @@ export default defineComponent({
 }
 
 .credit-group {
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1);c */
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   width: 100%;
   text-align: center;
 }
@@ -839,14 +1007,15 @@ export default defineComponent({
 .credit-group h3 {
   font-size: 1rem;
   color: #333333;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
   font-family: "Poppins", sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .credit-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
 }
 
@@ -861,7 +1030,7 @@ export default defineComponent({
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -875,6 +1044,7 @@ export default defineComponent({
   justify-content: flex-start;
   flex: 0 1 auto;
   min-width: 300px;
+  margin-bottom: 2rem;
 }
 
 .design-image-item img {
@@ -889,9 +1059,8 @@ export default defineComponent({
 }
 
 .design-image-item p {
-  font-size: 0.9rem;
-  /* font-weight: 00; */
-  line-height: 1.8rem;
+  font-size: 0.85rem;
+  line-height: 1.6rem;
   margin-top: 1rem;
   text-align: center;
   color: #666666;
@@ -907,9 +1076,50 @@ export default defineComponent({
   width: 100%;
 }
 
+.design-image-item.small {
+  min-width: 280px;
+  max-width: 280px;
+}
+
+.design-image-item.small img {
+  max-width: 280px;
+  width: 100%;
+}
+
 @media (max-width: 992px) {
   .thoughts-view {
     padding: 0;
+  }
+
+  .cover-tracklist-container {
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .cover-section {
+    width: 320px;
+  }
+
+  .tracklist {
+    min-width: 320px;
+    margin-left: 0;
+  }
+
+  .tracklist li {
+    font-size: 0.95rem;
+    line-height: 2rem;
+  }
+
+  .track-title {
+    font-size: 0.95rem;
+  }
+
+  .track-artist {
+    font-size: 0.9rem;
   }
 
   .cover-section {
@@ -917,7 +1127,7 @@ export default defineComponent({
   }
 
   .main-section {
-    padding: 1.5rem;
+    padding: 2rem;
   }
 
   .main-section.scrollable {
@@ -925,7 +1135,8 @@ export default defineComponent({
   }
 
   .main-section.scrollable .sub-title {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1.2rem 0;
+    margin-bottom: 1.8rem;
   }
 
   .credit-list {
@@ -950,6 +1161,54 @@ export default defineComponent({
 
   .design-image-item.wide {
     max-width: 100%;
+  }
+
+  .title-section h1 {
+    font-size: 2rem;
+  }
+
+  .sub-title {
+    font-size: 1.2rem;
+    padding: 1.2rem 0;
+    margin-bottom: 1.8rem;
+  }
+
+  .content {
+    font-size: 0.85rem;
+  }
+
+  .story-item h3 {
+    font-size: 1rem;
+  }
+
+  .story-item p {
+    font-size: 0.85rem;
+    line-height: 1.8rem;
+    margin: 1rem 0;
+  }
+
+  .design-image-item p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tracklist li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+  
+  .track-number {
+    width: 25px;
+    font-size: 11px;
+  }
+  
+  .track-title {
+    font-size: 13px;
+  }
+  
+  .track-artist {
+    font-size: 12px;
   }
 }
 </style>
