@@ -62,7 +62,11 @@ export default {
 </header>
 
 <main>
-  <RouterView />
+  <RouterView v-slot="{ Component, route }">
+    <Transition name="page-fade" mode="out-in">
+      <component :is="Component" :key="route.fullPath" />
+    </Transition>
+  </RouterView>
 </main>
 
 <!-- footer -->
@@ -179,6 +183,7 @@ export default {
 
 /* footer */
 .footer {
+  margin-top: 64px;
   background-color: #101010;
   color: #fff;
   font-weight: 600;
@@ -253,5 +258,14 @@ export default {
 <style>
 main > div:last-child {
   padding-bottom: 96px;
+}
+
+.page-fade-enter-active,
+.page-fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+.page-fade-enter-from,
+.page-fade-leave-to {
+  opacity: 0;
 }
 </style>

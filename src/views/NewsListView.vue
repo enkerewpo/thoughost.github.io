@@ -3,37 +3,13 @@ import { news_s } from '../assets/resources'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  created() {
-    window.addEventListener("resize", this.resize_handle);
-    // check if mobile first
-    if (window.innerWidth < 768) {
-      this.ifViewOnMobile = true
-    }
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.resize_handle);
-  },
   computed: {
     newsData() {
-      let data = news_s
-      console.log(data)
-      return data
-    }
-  },
-  methods: {
-    resize_handle(e: any) {
-      let width = e.target.innerWidth
-      if (width < 768) {
-        this.ifViewOnMobile = true
-      } else {
-        this.ifViewOnMobile = false
-      }
+      return (news_s || []).filter((n: any) => n && n.id)
     }
   },
   data() {
-    return {
-      ifViewOnMobile: false
-    }
+    return {}
   }
 })
 </script>
@@ -41,62 +17,72 @@ export default defineComponent({
 <template>
   <div class="news-page container">
     <div class="page-title">
-      <h2>ALL NEWS</h2>
+      <h2>NEWS</h2>
     </div>
-    <div class="news-row">
-      <div v-for="item in newsData" :key="item.id" class="item" :style="ifViewOnMobile ? 'width: 98%' : 'width: 95%'">
-        <div class="news-wrapper">
-          <div v-if="item.id">
-            <div class="news-title">
-              <!-- {{ item.title }} -->
-              <a :href="`/news/${item.id}`">{{ item.title }}</a>
-            </div>
-            <div class="news-date">{{ item.date }}</div>
-          </div>
-        </div>
+    <div class="news-list">
+      <div v-for="item in newsData" :key="item.id" class="news-item">
+        <span class="news-date-tag">{{ item.date }}</span>
+        <a :href="`/news/${item.id}`" class="news-link">{{ item.title }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
-.news-row {
-  /* one news one row , left is title, right is date */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .news-page {
-  margin-top: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .page-title {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.news-wrapper {
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
+.page-title h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
 }
 
-.news-title {
-  font-size: 1.2rem;
-  font-weight: bold;
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.news-date {
-  text-align: right;
-  font-size: 0.8rem;
+.news-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.item {
-  margin: 2.5rem 2% 0;
-  float: left;
+.news-date-tag {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: #101010;
+  padding: 4px 10px;
+  min-width: 90px;
+  text-align: center;
 }
 
+.news-link {
+  font-weight: 600;
+  color: #101010;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.news-link:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .news-item {
+    flex-wrap: wrap;
+  }
+}
 </style>

@@ -22,11 +22,11 @@ export default {
 </script>
 
 <template>
+  <div class="home-view">
+    <Carousel></Carousel>
 
-  <Carousel></Carousel>
-  
-  <!-- news container -->
-  <div class="container tg-pt-40 tg-pb-40">
+    <!-- news container -->
+    <div class="container tg-pt-40 tg-pb-40">
     <div class="tg-pb-40">
       <h2 class="tg-font-20">NEWS</h2>
     </div>
@@ -54,7 +54,7 @@ export default {
       <div class="tg-pb-40">
         <h2 class="tg-font-20">RELEASES</h2>
       </div>
-      <div class="tg-flex-lr tg-flex-wrap" style="margin-top: -12px;">
+      <div class="release-grid">
         <div v-for="release in releases" :key="release.id" class="release-cover"
           :style="`background-image:url(${release_cover(release.id)})`">
           <a target="_top" :href="release.homepage">
@@ -71,6 +71,7 @@ export default {
     </div>
   </div>
 
+  </div>
   <!-- <main class="container">
   <div class="mt-4 d-block w-100">
     <div class="title-header">
@@ -161,14 +162,30 @@ export default {
   vertical-align: middle;
 }
 
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 278px));
+  justify-content: center;
+  gap: 16px;
+  margin-top: 0;
+  padding-bottom: 52px;
+}
+
 .release-cover {
-  width: 278px;
-  height: 278px;
-  margin-top: 12px;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 278px;
+  max-height: 278px;
+  justify-self: center;
   background-size: cover;
   background-position: center;
   position: relative;
-  margin-left: 10px;
+}
+
+.release-cover a {
+  display: block;
+  position: absolute;
+  inset: 0;
 }
 
 .release-bar:hover img {

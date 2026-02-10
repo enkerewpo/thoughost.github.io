@@ -1,149 +1,135 @@
 <script lang="ts">
-
 import { news_s, news_images_s } from '../assets/resources'
 
 export default {
-    computed: {
-        get_news: function (vm: any) {
-            console.log(vm.$route.params.id)
-            let data = news_s.find((news: any) => news.id == vm.$route.params.id)
-            console.log(data)
-            return data
-        },
-        get_image: function (vm: any) {
-            let data = news_images_s.find((news: any) => news.id == vm.$route.params.id)
-            return data
-        },
+  computed: {
+    get_news() {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? news_s.find((n: any) => n.id === id) : undefined;
     },
+    get_image() {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? news_images_s.find((n: any) => n.id === id) : undefined;
+    },
+    /** Content with plain URLs turned into clickable links. */
+    contentWithLinks(): string {
+      const raw = this.get_news?.content;
+      if (!raw || typeof raw !== 'string') return '';
+      // Match http(s):// then any character that can appear in a URL (no whitespace, no <>"')
+      const urlRe = /(^|[\s>])(https?:\/\/[^\s<>"']+)/g;
+      const escape = (s: string) =>
+        s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      return raw.replace(urlRe, (_: string, before: string, url: string) => {
+        const trimmed = url.replace(/[.!?)\]\u201d\u2019]+$/, '');
+        const suffix = url.slice(trimmed.length);
+        return `${before}<a href="${escape(trimmed)}" target="_blank" rel="noopener">${escape(trimmed)}</a>${suffix}`;
+      });
+    },
+  },
 }
 </script>
 
 <template>
+  <div class="news-detail-view container">
     <div v-if="get_news == undefined" class="news-detail">
-        <!-- print vm.$route.params.id -->
-        <div class="news-title">News <span style="color: gray;">{{ $route.params.id }}</span> not found : (</div>
+      <p class="news-not-found">News {{ $route.params.id }} not found.</p>
     </div>
-    <div v-if="get_news != undefined" class="news-detail">
-        <div class="news-title">{{ get_news.title }}</div>
-        <div class="news-date">{{ get_news.date }}</div>
-        <div v-if="get_image != undefined">
-            <img class="news-image" :src="get_image.url" alt="news image">
-        </div>
-        <div class="news-content">
-            <div v-html="get_news.content"></div>
-        </div>
+    <div v-else class="news-detail">
+      <p class="news-date">{{ get_news.date }}</p>
+      <h1 class="news-title">{{ get_news.title }}</h1>
+      <img v-if="get_image != undefined" class="news-image" :src="get_image.url" alt="">
+      <div class="news-content" v-html="contentWithLinks"></div>
     </div>
+  </div>
 </template>
 
 <style scoped>
-.news-detail {
-    margin-top: 20px;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.news-detail-view {
+  padding-top: 40px;
+  padding-bottom: 60px;
 }
 
-.news-title {
-    font-size: 1.5rem;
-    font-weight: bold;
+.news-detail {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .news-date {
-    text-align: right;
-    font-size: 0.8rem;
-    color: #666;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #101010;
+  margin: 0 0 8px 0;
+}
+
+.news-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  line-height: 1.3;
+}
+
+.news-not-found {
+  color: #101010;
+  margin: 0;
 }
 
 .news-image {
-    width: 40%;
-    /* center */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin-bottom: 24px;
 }
 
 .news-content {
-    margin-top: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #101010;
 }
 
-.news-content img {
-    width: 100%;
-    margin-top: 20px;
+.news-content :deep(p) {
+  margin: 0 0 12px 0;
 }
 
-.news-content p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-top: 10px;
+.news-content :deep(a) {
+  color: #101010;
+  text-decoration: underline;
 }
 
-.news-content a {
-    color: #007bff;
-    text-decoration: none;
+.news-content :deep(a:hover) {
+  opacity: 0.7;
 }
 
-.news-content a:hover {
-    text-decoration: underline;
+.news-content :deep(h1),
+.news-content :deep(h2),
+.news-content :deep(h3),
+.news-content :deep(h4),
+.news-content :deep(h5),
+.news-content :deep(h6) {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 24px 0 8px 0;
 }
 
-.news-content h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 20px;
+.news-content :deep(ul),
+.news-content :deep(ol) {
+  margin: 12px 0;
+  padding-left: 24px;
 }
 
-.news-content h2 {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-top: 20px;
+.news-content :deep(li) {
+  margin-bottom: 4px;
 }
 
-.news-content h3 {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 20px;
+.news-content :deep(blockquote) {
+  margin: 20px 0;
+  padding: 12px 0 12px 16px;
+  border-left: 3px solid #101010;
+  color: #101010;
 }
 
-.news-content h4 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.news-content h5 {
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.news-content h6 {
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.news-content ul {
-    margin-top: 20px;
-    padding-left: 20px;
-}
-
-.news-content ol {
-    margin-top: 20px;
-    padding-left: 20px;
-}
-
-.news-content li {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.news-content blockquote {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-left: 5px solid #007bff;
+.news-content :deep(img) {
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0;
 }
 </style>

@@ -46,6 +46,11 @@ const router = createRouter({
       path: '/blackhole',
       name: 'blackhole',
       component: () => import('../views/BlackholeView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })

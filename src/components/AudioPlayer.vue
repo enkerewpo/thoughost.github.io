@@ -1,7 +1,7 @@
 <template>
   <div v-if="info" class="audio-info">
-    <h6 style="font-size: 19px;">{{ song_title }}</h6>
-    <p style="font-size: 13px; font-style: italic;">{{ song_artist }}</p>
+    <h6 class="audio-title">{{ song_title }}</h6>
+    <p class="audio-artist">{{ song_artist }}</p>
     <div class="controls">
       <button @click="toggle">
         <i :class="play_back_icon"></i>
@@ -11,7 +11,6 @@
     </div>
     <div class="progress-bar">
       <div class="progress-played" :style="{ width: progress_played_width }"></div>
-      <div class="progress-remaining" :style="{ width: 100 - parseFloat(progress_played_width) + '%' }"></div>
       <input type="range" class="time-slider" :value="song_current_time" :max="song_total_time" @input="seek_to_time">
     </div>
   </div>
@@ -34,8 +33,14 @@ export default defineComponent({
     };
   },
   computed: {
-    info: (vm: any) => (rls_info_l as Record<string, any>)[(vm.$route.params.id as string)],
-    get_audio: (vm: any) => crossfade_audios((vm.$route.params.id as string)),
+    info(): Record<string, any> | undefined {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? (rls_info_l as Record<string, any>)[id] : undefined;
+    },
+    get_audio(): string {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? crossfade_audios(id) : '';
+    },
     play_back_icon(): string {
       return this.is_playing ? 'fas fa-pause' : 'fas fa-play';
     },
@@ -50,6 +55,7 @@ export default defineComponent({
   },
   methods: {
     async load_audio() {
+      if (!this.info?.audio) return;
       this.song_title = this.info.audio.title;
       this.song_artist = this.info.audio.artist;
 
@@ -100,54 +106,113 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.audio-info {
+  padding: 24px 0;
+  max-width: 360px;
+}
+
+.audio-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.audio-artist {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
 .controls button {
-  border: none;
-  background: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid #101010;
+  background: #fff;
+  color: #101010;
   cursor: pointer;
   outline: none;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.controls button:hover {
+  background: #101010;
+  color: #fff;
+}
+
+.controls button i {
+  font-size: 16px;
 }
 
 .time-info {
-  display: inline-block;
-  margin-left: 10px;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .progress-bar {
   width: 100%;
-  height: 8px;
-  background-color: #000;
-  border-radius: 2px;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
+/* 已播放：绝对定位铺满整条高度，避免只显示一半 */
 .progress-played {
-  height: 100%;
-  background-color: #000;
-}
-
-.progress-remaining {
-  height: 100%;
-  background-color: #d1d1d1;
   position: absolute;
+  left: 0;
   top: 0;
-  right: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: #b0b0b0;
+  border-radius: 0;
+  transition: width 0.1s linear;
+  pointer-events: none;
 }
 
 .time-slider {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  margin: 0;
+  background: transparent;
   border: none;
   outline: none;
   -webkit-appearance: none;
 }
 
+.time-slider::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 10px;
+}
+
+.time-slider::-moz-range-track {
+  background: transparent;
+  height: 10px;
+}
+
 .time-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  background-color: #000;
+  width: 14px;
+  height: 14px;
+  background-color: #101010;
   border-radius: 0;
   cursor: pointer;
   position: relative;
@@ -155,13 +220,13 @@ export default defineComponent({
 }
 
 .time-slider::-webkit-slider-thumb:hover {
-  background-color: #a5a5a5;
+  background-color: #555;
 }
 
 .time-slider::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  background-color: #000;
+  width: 14px;
+  height: 14px;
+  background-color: #101010;
   border-radius: 0;
   cursor: pointer;
   position: relative;
@@ -169,6 +234,6 @@ export default defineComponent({
 }
 
 .time-slider::-moz-range-thumb:hover {
-  background-color: #a5a5a5;
+  background-color: #555;
 }
 </style>

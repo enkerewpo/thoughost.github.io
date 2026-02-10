@@ -4,9 +4,18 @@ import AudioPlayer from '@/components/AudioPlayer.vue';
 import PageBanner from '@/components/PageBanner.vue';
 export default {
   computed: {
-    info: (vm: any) => (rls_info_l as Record<string, any>)[(vm.$route.params.id as string)],
-    get_cover: (vm: any) => rls_cover((vm.$route.params.id as string)),
-    get_banner: (vm: any) => rls_banner((vm.$route.params.id as string)),
+    info(): Record<string, any> | undefined {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? (rls_info_l as Record<string, any>)[id] : undefined;
+    },
+    get_cover(): string {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? rls_cover(id) : '';
+    },
+    get_banner(): string {
+      const id = (this as any).$route?.params?.id as string;
+      return id ? rls_banner(id) : '';
+    },
   },
   methods: {
     get_icon: shop_icon,
@@ -24,6 +33,8 @@ export default {
 </script>
 
 <template>
+  <div class="release-detail-view">
+    <div>
   <div v-if="info != undefined" class="album-info">
     <PageBanner :subtitle="info.subtitle" :style="{ 'background-image': 'url(' + get_banner + ')' }">
       <div style="position: relative;">
@@ -42,24 +53,19 @@ export default {
       </div>
     </PageBanner>
     <div class="detail container">
-      <div class="row">
-        <div class="col-lg">
-          <div>
+      <div class="detail-layout">
+        <div class="detail-left">
+          <div class="cover-wrap">
             <img class="cover" :src="get_cover">
           </div>
-          <!-- CROSSFADE AUDIO PLAYER -->
-          <div class="box" style="margin-top: 20px; margin-right: 21px">
+          <div class="detail-audio-wrap">
             <AudioPlayer />
           </div>
-          <!-- ARTWORK DOWNLOAD BUTTON -->
-          <a class="button" @click="download_artwork" style="margin-top: 6px; margin-right: 21px">
-            <span class="icon">
-              <i class="fas fa-download"></i>
-            </span>
-            <span>DOWNLOAD ARTWORK</span>
-          </a>
+          <button type="button" class="btn-minimal" @click="download_artwork">
+            <span>↓</span> DOWNLOAD ARTWORK
+          </button>
         </div>
-        <div class="col-lg">
+        <div class="detail-right">
           <div class="tracks">
             <div class="sub-title">DISC 1</div>
             <div class="tracks-item" style="padding: 0;"></div>
@@ -71,7 +77,7 @@ export default {
           </div>
         </div>
       </div>
-      <hr style="margin: 40px 0;">
+      <hr class="detail-hr">
       <div class="infos">
         <div class="sub-info">
           <div class="subsub-title">INFO</div>
@@ -113,10 +119,9 @@ export default {
     </div>
   </div>
   <div hidden id="art-url">{{ get_cover }}</div>
+    </div>
+  </div>
 </template>
-
-<!-- https://jenil.github.io/bulmaswatch/lumen/ -->
-<style src="@/assets/bulmaswatch.min.css" scoped></style>
 
 <style scoped>
 .page-banner::before {
@@ -153,24 +158,17 @@ export default {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.album-info .access .bandcamp {
-  color: #1da0c3;
-  border: #1da0c3 2px solid;
-}
-
-.album-info .access .bandcamp:hover {
-  background-color: #1da0c3;
-  color: azure;
-}
-
+.album-info .access .bandcamp,
 .album-info .access .dizzylab {
-  color: #f96027;
-  border: #f96027 2px solid;
+  color: #101010;
+  border: 2px solid #101010;
+  background: #fff;
 }
 
+.album-info .access .bandcamp:hover,
 .album-info .access .dizzylab:hover {
-  background-color: #f96027;
-  color: azure;
+  background-color: #101010;
+  color: #fff;
 }
 
 @media (min-width: 992px) {
@@ -199,9 +197,57 @@ export default {
   margin-top: 60px;
 }
 
+.detail-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.detail-left {
+  flex: 0 1 520px;
+}
+
+.detail-right {
+  flex: 1 1 300px;
+}
+
+.cover-wrap {
+  margin-bottom: 20px;
+}
+
 .album-info .detail .cover {
   width: 100%;
-  padding: 0 21px 0 0;
+  max-width: 520px;
+  display: block;
+}
+
+.detail-audio-wrap {
+  margin-bottom: 12px;
+}
+
+.btn-minimal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #101010;
+  background: #fff;
+  border: 2px solid #101010;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.btn-minimal:hover {
+  background: #101010;
+  color: #fff;
+}
+
+.detail-hr {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .album-info .detail .tradition-a {

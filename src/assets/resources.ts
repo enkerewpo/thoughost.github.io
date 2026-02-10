@@ -66,12 +66,10 @@ _rls_list.forEach(name => {
     }
   }
 })
-// infomation in detail
+// infomation in detail (all releases, keyed by id for /releases/:id)
 let rls_info_l: Record<string, any> = {}
 for (let k in _rls_info) {
-  if (_rls_info[k].url == null) {
-    rls_info_l[_rls_info[k].id] = _rls_info[k]
-  }
+  rls_info_l[_rls_info[k].id] = _rls_info[k]
 }
 
 // banner
